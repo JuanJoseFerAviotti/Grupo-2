@@ -6,14 +6,6 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
-document.addEventListener("DOMContentLoaded", function () {
-  let user = localStorage.getItem("user");
-
-  if (!user) {
-    // Redirect to login if not logged in
-    window.location.href = "login.html";
-  }
-});
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
