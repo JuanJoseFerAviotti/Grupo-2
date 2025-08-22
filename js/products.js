@@ -16,13 +16,20 @@ function showCarsList(array){
                     <div class="d-flex w-100 justify-content-between">
                         <div class="mb-1">
                         <h4>`+ product.name +`</h4> 
-                        <p> `+ product.description +`</p> 
+                        <hr>
+                        <p class = "precio" ><strong> `+ product.currency + product.cost +`</strong></p>
                         <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                        <p><strong> `+ product.currency + product.cost +`</strong></p>
+                        <p> `+ product.description +`</p> 
+                        
                         </div>
                          
                     </div>
 
+                </div>
+            </div>
+            <div class = "compra">
+                <div class = "subcompra">
+                    <p>Añadir a carrito</p>
                 </div>
             </div>
         </div>
