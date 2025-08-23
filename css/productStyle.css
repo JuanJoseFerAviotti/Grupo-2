@@ -1,9 +1,5 @@
 
-#Priority{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+
 .list-group-item, .list-group-item-action{
     width: 400px;
     height: 600px;
