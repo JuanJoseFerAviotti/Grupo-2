@@ -47,6 +47,7 @@ header .container {
 
 /* ENCABEZADO LISTA DE AUTOS */
 .text-center{
+    width: 118.4%;
     background-color: black;
     margin: auto auto;
     left: 0px;
