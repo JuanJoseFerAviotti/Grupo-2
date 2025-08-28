@@ -1,78 +1,4 @@
-
-
-.list-group-item, .list-group-item-action{
-    width: 400px;
-    height: 600px;
-    border-radius: 40px;
-    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-    background-color: white;
-    margin: 50px 50px;
-    float: inline-start;
-}
-.row {
-    border-radius: 30px;
-    width: 300px;
-    height: 450px;
-    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
-    margin: auto auto ;
-    margin-top: 15px;
-    padding: 20px;
-    margin-bottom: 24px;
-}
-
-.mb-1 hr{
-    width: 340px;
-    height: 1px;
-    background-color: black;
-    transform: translateX(-20px);
-}
-.mb-1 h4{
-    text-align: center;
-    font-weight: 700;
-    font-family:Arial, Helvetica, sans-serif; ;
-}
-.mb-1 .precio{
-    font-size: 20px;
-    margin-bottom: 0;
-}
-.compra{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: 900;
-    border-radius: 15px;
-    text-align: center;
-    width: 200px;
-    margin: 5px auto;
-    height: 30px;
-    padding: 12.5px;
-    background-color: #FFBB00;
-    display: block;
-}
-.subcompra p{
-    margin: 0;
-}
-.col-3 img{
-    border-radius: 25px;
-    display: block;
-    height: 175px;
-
-}
-#Footer .container{
-    display: flex;
-    margin-bottom: 0;
-    justify-content: space-between;
-    background-color: black;
-    width: 100%;
-    color: white;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-body{
-    margin-left: 95px;
-    margin-top: 0;
-    margin-bottom: 0;
-}
+/* HEADER */
 .vertical_header{
     position: fixed;
     top: 0;
@@ -84,6 +10,7 @@ body{
     padding-left: 0;
     display: flex;
     flex-direction: column;
+    z-index: 140;
 }
 .navbar-toggler{
     margin-left: 16px;
@@ -118,15 +45,113 @@ header .container {
 .navbar-nav{
     padding: 0;
 }
+
+/* ENCABEZADO LISTA DE AUTOS */
 .text-center{
+    position: fixed;
+    padding-left: 95px;
+    width: 118.4%;
     background-color: black;
     margin: auto auto;
     left: 0px;
     color: #FFBB00;
     height: 75px;
+    z-index: 130;
 }
+
 .text-center h2{
     padding: 25px;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+/* TARJETAS DE LOS AUTOS */
+section{
+    height: 80%;
+}
+.list-group-item, .list-group-item-action{
+    transform: translateY(75px);
+    width: 400px;
+    height: 600px;
+    border-radius: 40px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    background-color: white;
+    margin: 50px 50px;
+    float: inline-start;
+}
+.row {
+    border-radius: 30px;
+    width: 300px;
+    height: 450px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    margin: auto auto ;
+    margin-top: 15px;
+    padding: 20px;
+    margin-bottom: 24px;
+}
+.mb-1 hr{
+    border: 0;
+    width: 340px;
+    height: 1px;
+    background-color: black;
+    transform: translateX(-20px);
+}
+.mb-1 h4{
+    text-align: center;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif; ;
+}
+.mb-1 .precio{
+    font-size: 20px;
+    margin-bottom: 0;
+}
+.compra{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    border-radius: 15px;
+    text-align: center;
+    width: 200px;
+    margin: 5px auto;
+    height: 30px;
+    padding: 12.5px;
+    background-color: #FFBB00;
+    display: block;
+}
+.subcompra p{
+    margin: 0;
+}
+.col-3 img{
+    border-radius: 25px;
+    display: block;
+    height: 175px;
+}
+/* Footer */
+#Footer .container{
+    transform: translateY(75px);
+    display: flex;
+    margin-bottom: 0;
+    justify-content: space-between;
+    background-color: black;
+    width: 114.3%;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+footer #JAP{
+    width: 330px;
+    margin-left: 0;
+}
+body{
+    width: 80%;
+    margin-left: 95px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.pb-5{
+    width: 118.4%;
+    height: 90%;
+}
+#Priority {
+    height: 1px;
+    height: 100%;
 }
