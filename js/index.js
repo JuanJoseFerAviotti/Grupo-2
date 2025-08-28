@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", function(){
     const loggedIn = localStorage.getItem("loggedIn");
+    const usuario = localStorage.getItem("usuario");
+  const usuarioDiv = document.getElementById("usuarioo");
+  console.log("Elemento li:", usuarioDiv);
+
+  if (!loggedIn) {
+    window.location.href = "login.html";
+  } else {
+    usuarioDiv.textContent =`Hola ${usuario}`;
+  }
+
 
     if (!loggedIn) {
 
