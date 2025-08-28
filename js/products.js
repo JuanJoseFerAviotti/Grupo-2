@@ -1,5 +1,7 @@
 let carsArray = [];
 
+
+
 //función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
 function showCarsList(array){
     let htmlContentToAppend = "";
@@ -49,3 +51,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 });
+
+const desplegable = document.querySelector(".menu-desplegable");
+const navMenu = document.querySelector(".navbar-nav");
+
+desplegable.addEventListener("click", () => {
+    desplegable.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    desplegable.classList.remove("active");
+    navMenu.classList.remove("active");
+}));
