@@ -73,9 +73,10 @@ header .container {
     height: 75px;
     z-index: 130;
 }
+#listado-autos1{
+    display: none;
 
-
-}
+}}
 
 .text-center h2{
     padding: 25px;
@@ -297,5 +298,8 @@ body{
     }
     #Priority {
         margin-left: 10%;
+    }
+    #listado-autos2{
+        display: none;
     }
 }
