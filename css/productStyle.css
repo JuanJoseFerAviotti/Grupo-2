@@ -15,6 +15,7 @@
 .menu-desplegable{
     display: none;
     cursor: pointer;
+    margin: 3%;
 }
 .bar {
     display: block;
@@ -53,12 +54,14 @@ header hr{
 header .container {
     top: 0;
     margin-left: 0;
+   
 }
 .navbar-nav{
     padding: 0;
 }
 
 /* ENCABEZADO LISTA DE AUTOS */
+@media(min-width: 768px){
 .text-center{
     position: fixed;
     padding-left: 95px;
@@ -69,6 +72,9 @@ header .container {
     color: #FFBB00;
     height: 75px;
     z-index: 130;
+}
+
+
 }
 
 .text-center h2{
@@ -170,13 +176,13 @@ body{
         top: 0;
         left: 0;
         width: 10%;
-        height: 10%;
+        height: 5%;
         background-color: #FFBB00;
-        padding: 10px;
-        padding-left: 0;
-        display: flex;
-        flex-direction: row;
-        z-index: 140;
+        
+        
+        
+       
+        
     }
     .menu-desplegable{
         display: block;
@@ -196,15 +202,19 @@ body{
         left: 0;
     }
     .text-center{
-        position: flex;
-        padding-left: 0;
-        width: 100%;
-        background-color: black;
-        margin: auto auto;
-        left: 0px;
-        color: #FFBB00;
+       
+       
+      
+        
+        color: black;
         height: 50px;
-        z-index: 130;
+        
+    }
+    #prueba{
+        display: flex;
+        flex-direction: row;
+       width: 100%;
+       height: 5%;
     }
     .text-center h2{
         padding: 10px;
