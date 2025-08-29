@@ -296,7 +296,6 @@ body{
         height: 90%;
     }
     #Priority {
-        height: 1px;
-        height: 100%;
+        margin-left: 10%;
     }
 }
