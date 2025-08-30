@@ -7,12 +7,20 @@
   <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
+  <div class="upper-band">
+    <div class="logo" id="logo1">!</div>
+  </div>
   <div class="container">
     <!-- Banda izquierda -->
     <aside class="left-band"></aside>
+    
+    
 
     <!-- Formulario -->
     <main class="login-box">
+     
+        <div class="logo" id="logo2">!</div>
+      
       <h1>Iniciar Sesión</h1>
       <form>
         <label for="usuario">Usuario</label>
@@ -33,8 +41,10 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      
+      const usuario = document.getElementById("usuario").value;
       localStorage.setItem("loggedIn", "true");
+      localStorage.setItem("usuario", usuario);
+      console.log("Guardado en localStorage:", usuario);
 
       window.location.href = "index.html";
     });
