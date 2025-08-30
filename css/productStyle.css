@@ -90,7 +90,7 @@ section{
 }
 .list-group-item, .list-group-item-action{
     transform: translateY(75px);
-    width: 400px;
+    width: 375px;
     height: 600px;
     border-radius: 40px;
     box-shadow: rgb(0, 0, 0) 0px 0px 5px;
@@ -100,7 +100,7 @@ section{
 }
 .row {
     border-radius: 30px;
-    width: 300px;
+    width: 290px;
     height: 450px;
     box-shadow: rgb(0, 0, 0) 0px 0px 5px;
     margin: auto auto ;
@@ -110,7 +110,7 @@ section{
 }
 .mb-1 hr{
     border: 0;
-    width: 340px;
+    width: 330px;
     height: 1px;
     background-color: black;
     transform: translateX(-20px);
@@ -175,20 +175,16 @@ body{
 @media(max-width: 768px){
     .vertical_header{
          position: fixed;
-    top: 0;
-    left: 0;
-    
-    background-color: #FFBB00;
-    padding: 20px;
-    padding-left: 0;
-    display: flex;
-    flex-direction: column;
-    z-index: 140;
-        
+        top: 0;
+        left: 0;    
+        background-color: #FFBB00;
+        padding: 20px;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 140;
         width: 10%;
         height: 5%;
-        
-
     }
     .menu-desplegable{
         display: block;
@@ -208,10 +204,6 @@ body{
         left: 0;
     }
     .text-center{
-       
-       
-      
-        
         color: black;
         height: 50px;
         
