@@ -9,18 +9,18 @@ function showCarsList(array){
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
+        <div class="EtiquetaDeProductoMain">
+            <div class="EtiquetaDeProductoIN">
+                <div class="ContenedorImage">
                     <img src="` + product.image + `" alt="` + product.name + `" class="img-thumbnail">
                 </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
+                <div class="Descripcion">
+                    <div class="ContenedorDescripcion">
+                        <div class="Producto">
                         <h4>`+ product.name +`</h4> 
                         <hr>
                         <p class = "precio" ><strong> `+ product.currency + product.cost +`</strong></p>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small>
+                        <small class="CantVendidos">` + product.soldCount + ` vendidos</small>
                         <p> `+ product.description +`</p> 
                         
                         </div>
