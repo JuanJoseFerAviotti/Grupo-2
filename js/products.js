@@ -4,14 +4,14 @@ const url = PRODUCTS_URL + categoryId + ".json";
 
 
 
-//función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
+
 function showCarsList(array){
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div class="list-group-item list-group-item-action producto-item" data-id="${product.id}">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.image + `" alt="` + product.name + `" class="img-thumbnail">
@@ -40,9 +40,19 @@ function showCarsList(array){
         `
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
     }
+    document.querySelectorAll(".producto-item").forEach(item => {
+        item.addEventListener("click", () => {
+            const id = item.getAttribute("data-id");
+            const productoSeleccionado = array.find(p => p.id == id);
+
+            
+            localStorage.setItem("productoSeleccionado", JSON.stringify(productoSeleccionado));
+
+            
+            window.location.href = "product-info.html";
+        });
+    });
 }
-//Evento que se ejecuta cuando el DOM está completamente cargado
-//llama a la función que muestra los productos
 
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then(function(resultObj){
