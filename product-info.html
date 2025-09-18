@@ -10,36 +10,55 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <link rel="stylesheet" href="css/productInfo.css">
+</head> 
+  <header class="vertical_header" id="pc">
+    <div class="vertical_header" id="prueba">
+       <div class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+      <div class="text-center p-4" id="listado-autos1">
+              <h2 strong>Nombre</strong></h2>
+          </div>
+    </div>
+      
+  <nav class="nvbar">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+      <button class="nvbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nvbarnv"
+        aria-controls="nvbarnv" aria-expanded="false" aria-label="Toggle nvigation" id="desplegable">
+        <span class="nvbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+      <hr class="linea">
+      <div class="collapse nvbar-collapse" id="nvbarnv">
+        <ul class="nvbar-nv">
+          <li class="nv-item">
+            <a class="nv-link" href="index.html"><img src="img/Inicio.png"></a>
+            </li>
+          <li class="nv-item">
+            <a class="nv-link" href="categories.html"><img src="img/Categorias.png"></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
+          <li class="nv-item">
+            <a class="nv-link" href="sell.html"><img src="img/Vender.png"></a>
           </li>
         </ul>
+        
+        <div class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+         
       </div>
     </div>
   </nav>
   <main>
-    <h1>Detalle del Producto</h1>
-  <div id="detalle"></div>
-    
+    <div class="container">
+      <div class="alert alert-danger text-center" role="alert">
+        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      </div>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
