@@ -1,4 +1,5 @@
 /* HEADER */
+
 .menu-desplegable{
     display: none;
     cursor: pointer;
@@ -46,60 +47,16 @@ header .container {
 .navbar-nav{
     padding: 0;
 }
-
-/* ENCABEZADO LISTA DE PRODUCTOS */
-@media(min-width: 768px){
-    /* contenedor del título */
-    .text-center{
-        position: relative; /* no flota */
-        width: 100%;
-        background-color: black;
-        color: #FFBB00;
-        z-index: 130;
-        margin-bottom: 20px; /* espacio debajo para filtros */
-        text-align: center;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .text-center h2{
-        margin: 0;
-        font-size: 24px;
-        font-weight: bold;
-    }
-
-    /* Barra decorativa debajo del título */
-    .text-center h2::after {
-        content: "";
-        display: block;
-        width: 100px;
-        height: 3px;
-        background-color: #FFBB00;
-        margin: 5px auto 0;
-        border-radius: 2px;
-    }
-
-    #pc{
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 75px;
-        height: 100vh;
-        background-color: #FFBB00;
-        padding: 20px;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        z-index: 140;
-    }
-
-    /* Ajuste principal: espacio para que no se tape el contenido */
-    main.pb-5 {
-        padding-top: 125px; /* mayor espacio para filtros */
-    }
+#listado-autos2{
+    position: absolute;
+    top: 0px;
 }
+.filtro{
+    position: absolute;
+    top: 100px;
+    left: 140px;
 
+}
 /* ENCABEZADO LISTA DE AUTOS */
 @media(min-width: 768px){
 .text-center{
@@ -142,17 +99,18 @@ section{
 }
 .list-group-item, .list-group-item-action{
     transform: translateY(75px);
-    width: 375px;
+    width: 400px;
     height: 600px;
     border-radius: 40px;
     box-shadow: rgb(0, 0, 0) 0px 0px 5px;
     background-color: white;
-    margin: 50px 50px;
+    margin: 200px 50px;
     float: inline-start;
+
 }
 .row {
     border-radius: 30px;
-    width: 290px;
+    width: 300px;
     height: 450px;
     box-shadow: rgb(0, 0, 0) 0px 0px 5px;
     margin: auto auto ;
@@ -162,7 +120,7 @@ section{
 }
 .mb-1 hr{
     border: 0;
-    width: 330px;
+    width: 340px;
     height: 1px;
     background-color: black;
     transform: translateX(-20px);
@@ -227,16 +185,20 @@ body{
 @media(max-width: 768px){
     .vertical_header{
          position: fixed;
-        top: 0;
-        left: 0;    
-        background-color: #FFBB00;
-        padding: 20px;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        z-index: 140;
+    top: 0;
+    left: 0;
+    
+    background-color: #FFBB00;
+    padding: 20px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 140;
+        
         width: 10%;
         height: 5%;
+        
+
     }
     .menu-desplegable{
         display: block;
@@ -256,6 +218,10 @@ body{
         left: 0;
     }
     .text-center{
+       
+       
+      
+        
         color: black;
         height: 50px;
         
@@ -283,7 +249,7 @@ body{
     }
     .list-group-item, .list-group-item-action{
         transform: translateY(50px);
-        width: 250px;
+        width: 300px;
         height: 550px;
         border-radius: 40px;
         box-shadow: rgb(0, 0, 0) 0px 0px 5px;
@@ -292,7 +258,7 @@ body{
     }
     .row {
         border-radius: 30px;
-        width: 175px;
+        width: 250px;
         height: 400px;
         box-shadow: rgb(0, 0, 0) 0px 0px 5px;
         margin: auto auto ;
@@ -302,7 +268,7 @@ body{
     }
     .mb-1 hr{
         border: 0;
-        width: 215px;
+        width: 240px;
         height: 1px;
         background-color: black;
         transform: translateX(-20px);
@@ -320,10 +286,11 @@ body{
         background-color: #FFBB00;
         display: block;
     }
-    .col-3 img{
+    .col-3
+    img{
         border-radius: 25px;
         display: block;
-        height: 110px;
+        height: 150px;
     }
     #Footer .container{
         transform: translateY(50px);
@@ -349,5 +316,6 @@ body{
     }
     #listado-autos2{
         display: none;
+        ;
     }
 }

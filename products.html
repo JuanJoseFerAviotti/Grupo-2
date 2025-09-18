@@ -57,14 +57,18 @@
     </div>
   </nav>
 </header>
-
   <section>
   
       <main role="main" class="pb-5">
           <div class="text-center p-4" id="listado-autos2">
               <h2 ><strong>LISTADO DE PRODUCTOS</strong></h2>
           </div>
-          <div class="container my-3">
+
+
+          
+          <div class="container" id="Priority">
+              <div class="Container">
+<div class="filtro">
         <h4>Filtros y Ordenamiento</h4>
         <div>
           <label for="minPrice">Precio mínimo:</label>
@@ -83,14 +87,16 @@
           <button id="sortRel">Relevancia</button>
         </div>
       </div>
-          <div class="container" id="Priority">
-              <div class="Container">
+               
                   <div class="list-group" id="cat-list-container">
 
                   </div>
+                  
               </div>
           </div>
+          
       </main>
+      
       <div id="spinner-wrapper">
         <div class="lds-ring">
         <div>
@@ -106,6 +112,7 @@
         <div></div>
       </div>
     </div>
+    
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
