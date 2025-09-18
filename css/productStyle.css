@@ -47,6 +47,59 @@ header .container {
     padding: 0;
 }
 
+/* ENCABEZADO LISTA DE PRODUCTOS */
+@media(min-width: 768px){
+    /* contenedor del título */
+    .text-center{
+        position: relative; /* no flota */
+        width: 100%;
+        background-color: black;
+        color: #FFBB00;
+        z-index: 130;
+        margin-bottom: 20px; /* espacio debajo para filtros */
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .text-center h2{
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    /* Barra decorativa debajo del título */
+    .text-center h2::after {
+        content: "";
+        display: block;
+        width: 100px;
+        height: 3px;
+        background-color: #FFBB00;
+        margin: 5px auto 0;
+        border-radius: 2px;
+    }
+
+    #pc{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 75px;
+        height: 100vh;
+        background-color: #FFBB00;
+        padding: 20px;
+        padding-left: 0;
+        display: flex;
+        flex-direction: column;
+        z-index: 140;
+    }
+
+    /* Ajuste principal: espacio para que no se tape el contenido */
+    main.pb-5 {
+        padding-top: 125px; /* mayor espacio para filtros */
+    }
+}
+
 /* ENCABEZADO LISTA DE AUTOS */
 @media(min-width: 768px){
 .text-center{
