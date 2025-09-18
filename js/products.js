@@ -1,4 +1,6 @@
 let carsArray = [];
+const categoryId = localStorage.getItem("catID")
+const url = PRODUCTS_URL + categoryId + ".json";
 
 
 
@@ -43,7 +45,7 @@ function showCarsList(array){
 //llama a la función que muestra los productos
 
 document.addEventListener("DOMContentLoaded", function(e){
-    getJSONData(PRODUCT_CARS).then(function(resultObj){
+    getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok")
         {
             carsArray = resultObj.data.products;
