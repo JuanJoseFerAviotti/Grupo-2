@@ -66,6 +66,38 @@ document.addEventListener("DOMContentLoaded", function(e){
             showCarsList(carsArray);
         }
     });
+    
+
+
+    document.getElementById("filterBtn").addEventListener("click", () => {
+        let min = parseInt(document.getElementById("minPrice").value) || 0;
+        let max = parseInt(document.getElementById("maxPrice").value) || Infinity;
+
+        let filtered = carsArray.filter(p => p.cost >= min && p.cost <= max);
+        showCarsList(filtered);
+    });
+
+    document.getElementById("clearFilterBtn").addEventListener("click", () => {
+        document.getElementById("minPrice").value = "";
+        document.getElementById("maxPrice").value = "";
+        showCarsList(carsArray);
+    });
+
+    //Ordenamientos
+    document.getElementById("sortAsc").addEventListener("click", () => {
+        let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
+        showCarsList(sorted);
+    });
+
+    document.getElementById("sortDesc").addEventListener("click", () => {
+        let sorted = [...carsArray].sort((a, b) => b.cost - a.cost);
+        showCarsList(sorted);
+    });
+
+    document.getElementById("sortRel").addEventListener("click", () => {
+        let sorted = [...carsArray].sort((a, b) => b.soldCount - a.soldCount);
+        showCarsList(sorted);
+    });
 });
 
 const desplegable = document.querySelector(".menu-desplegable");
