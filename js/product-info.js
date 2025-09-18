@@ -1,5 +1,5 @@
 const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
-    const detalle = document.getElementById("detalle");
+const detalle = document.getElementById("detalle");
 
     if (producto) {
       detalle.innerHTML = `
