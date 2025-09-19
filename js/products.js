@@ -55,9 +55,6 @@ function showCarsList(array){
 }
 
 
-//Evento que se ejecuta cuando el DOM está completamente cargado
-//llama a la función que muestra los productos
-
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -67,6 +64,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     
+    document.getElementById("buscarInput").addEventListener("input", (e) => {
+        const texto = e.target.value.toLowerCase();
+
+        const filtrados = carsArray.filter(p => 
+            p.name.toLowerCase().includes(texto) || 
+            p.description.toLowerCase().includes(texto)
+        );
+
+        showCarsList(filtrados);
+    });
 
 
     document.getElementById("filterBtn").addEventListener("click", () => {
@@ -83,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(carsArray);
     });
 
-    //Ordenamientos
+    
     document.getElementById("sortAsc").addEventListener("click", () => {
         let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
         showCarsList(sorted);
