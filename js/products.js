@@ -4,14 +4,14 @@ const url = PRODUCTS_URL + categoryId + ".json";
 
 
 
-//función que recibe un array con los datos, y los muestra en pantalla a través el uso del DOM
+
 function showCarsList(array){
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-             <div class="list-group-item list-group-item-action producto-item" data-id="${product.id}">
+            <div class="list-group-item list-group-item-action producto-item" data-id="${product.id}">
             <div class="row">
                 <div class="col-3">
                     <img src="` + product.image + `" alt="` + product.name + `" class="img-thumbnail">
@@ -55,9 +55,6 @@ function showCarsList(array){
 }
 
 
-//Evento que se ejecuta cuando el DOM está completamente cargado
-//llama a la función que muestra los productos
-
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(url).then(function(resultObj){
         if (resultObj.status === "ok")
@@ -67,6 +64,16 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     
+    document.getElementById("buscarInput").addEventListener("input", (e) => {
+        const texto = e.target.value.toLowerCase();
+
+        const filtrados = carsArray.filter(p => 
+            p.name.toLowerCase().includes(texto) || 
+            p.description.toLowerCase().includes(texto)
+        );
+
+        showCarsList(filtrados);
+    });
 
 
     document.getElementById("filterBtn").addEventListener("click", () => {
@@ -83,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(carsArray);
     });
 
-    //Ordenamientos
+    
     document.getElementById("sortAsc").addEventListener("click", () => {
         let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
         showCarsList(sorted);
