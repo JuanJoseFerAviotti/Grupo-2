@@ -90,7 +90,14 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(carsArray);
     });
 
-    
+
+
+
+
+
+
+
+
     document.getElementById("sortAsc").addEventListener("click", () => {
         let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
         showCarsList(sorted);
