@@ -1,6 +1,7 @@
 const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
 const detalle = document.getElementById("detalle");
 const titulo = document.getElementById("listado-autos2");
+const titulo2 = document.getElementById("listado-autos1");
 
     if (producto) {
       detalle.innerHTML = `
@@ -16,6 +17,7 @@ const titulo = document.getElementById("listado-autos2");
         
       `;
       titulo.innerHTML = `<h2>${producto.name}</h2>`;
+      titulo2.innerHTML = `<h2>${producto.name}</h2>`;
     } else {
       detalle.textContent = "No se encontró información del producto.";
     }
