@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", function(e){
             p.description.toLowerCase().includes(texto)
         );
 
+        
         showCarsList(filtrados);
     });
 
