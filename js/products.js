@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     
+/*---------------------Buscador-------------------- */
+
     document.getElementById("buscarInput").addEventListener("input", (e) => {
         const texto = e.target.value.toLowerCase();
 
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(filtrados);
     });
 
+/*-----------------------Filtros---------------------*/
 
     document.getElementById("filterBtn").addEventListener("click", () => {
         let min = parseInt(document.getElementById("minPrice").value) || 0;
@@ -97,13 +100,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(carsArray);
     });
 
-
-
-
-
-
-
-
+/* --------------------Ordenamiento---------------------------*/
 
     document.getElementById("sortAsc").addEventListener("click", () => {
         let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
