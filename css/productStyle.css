@@ -52,6 +52,7 @@ header .container {
     flex-direction: column;
     margin-top: 75px;
     height: 100%;
+
 }
 #listado-autos2{
     display: flex;
@@ -63,6 +64,9 @@ header .container {
     width: 400px;
     border-color: black;
     border-width: 11px;
+}
+.filter1{
+    margin-bottom: 10px;
 }
 .filter1 input{
     border-radius: 15px;
@@ -96,6 +100,7 @@ header .container {
     float: inline-start;
     padding: 20px;
     margin-top: 10px;
+    margin-bottom: 20px;
     border-radius: 15px;
     
 }
@@ -111,9 +116,7 @@ header .container {
     margin: 0;
     height: 100%;
 }
-main{
-    flex: 1;
-}
+
 /* ENCABEZADO LISTA DE AUTOS */
 @media(min-width: 768px){
 .text-center{
@@ -163,7 +166,6 @@ main{
 .list-group-item, .list-group-item-action{
     display: flex;
     flex-direction: column;
-    transform: translateY(75px);
     width: 400px;
     height: 600px;
     border-radius: 40px;
@@ -228,7 +230,7 @@ main{
     margin-bottom: 0;
     justify-content: space-between;
     background-color: black;
-    width: 114.3%;
+    width: 100%;
     color: white;
     padding-left: 30px;
     padding-right: 30px;
@@ -247,40 +249,52 @@ body {
     margin-top: 0;
     margin-left: 95px;
     display: flex;
-    min-height: 100%;
     flex-direction: column;
 }
 .pb-5{
     display: flex;
     width: 100%;
     top: 0;
+
 }
 
 @media(max-width: 768px){
-    .vertical_header{
-         position: fixed;
+    .vertical_header{ 
+        top: 0;
+        height: 70px;
+    }
+    body{
+        margin: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    #prueba{
+    position: fixed;
     top: 0;
-    left: 0;
-    
+    left: 0; 
     background-color: #FFBB00;
     padding: 20px;
     padding-left: 0;
     display: flex;
     flex-direction: column;
     z-index: 140;
-        
-        width: 10%;
-        height: 5%;
-        
-
+    width: 10%;
+    height: 85px;
+    }
+    #listado-autos1{
+        margin: auto 0;
+    }
+    #listado-autos1{
+        font-size: 2rem;
     }
     .menu-desplegable{
         display: block;
     }
     .navbar-nav{
+        margin-top: 20px;
         position: fixed;
         left: -100%;
-        top: 70px;
         flex-direction: column;
         background-color: #333;
         width: 20%;
@@ -289,7 +303,9 @@ body {
         gap: 0;
     }
     .navbar-nav.active {
+        top: 50px;
         left: 0;
+        z-index: 130;
     }
     .text-center{
         color: black;
@@ -308,6 +324,7 @@ body {
     }
     html{
         top: 0;
+        height: 100%;
     }
 
     .navbar-toggler{
@@ -316,14 +333,19 @@ body {
     .linea{
         display: none;
     }
+    .list-group{
+        flex-direction: column;
+
+    }
     .list-group-item, .list-group-item-action{
-        transform: translateY(50px);
+        top: 0;
         width: 300px;
-        height: 550px;
+        height: 525px;
         border-radius: 40px;
         box-shadow: rgb(0, 0, 0) 0px 0px 5px;
         background-color: white;
         margin: 20px auto;
+        margin-left: 10px;
     }
     .row {
         border-radius: 30px;
@@ -332,6 +354,7 @@ body {
         box-shadow: rgb(0, 0, 0) 0px 0px 5px;
         margin: auto auto ;
         margin-top: 15px;
+        margin-bottom: 0;
         padding: 20px;
 
     }
@@ -362,7 +385,7 @@ body {
         height: 150px;
     }
     #Footer .container{
-        transform: translateY(50px);
+        transform: translateY(180px);
         display: flex;
         margin-bottom: 0;
         justify-content: space-between;
@@ -381,10 +404,62 @@ body {
         height: 90%;
     }
     #Priority {
-        margin-left: 10%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 0;
+        height: 100%;
+        width: 100%;
     }
     #listado-autos2{
         display: none;
         ;
+    }
+    #filter {
+        width: 100%;
+    }
+    .filtro{
+        padding: 5px;
+        margin: 0;
+        width: 320px;
+        margin-left: 0;
+        flex-direction: column;
+        height: 200px;
+        border-radius: 0;
+        top :0;
+
+    }
+    .filtro h4{
+        margin: 2px;
+
+    }
+    .filter1 label{
+        display: none;
+    }
+    #Order1{
+        display: flex;
+        width: 300px;
+    }
+    #Order{
+        width: 100%;
+    }
+    #Order button{
+        width: 75px;
+        flex-direction: row;
+        height: 30px;
+        width: 100px;
+    }
+    
+    #listado-autos1 input{
+        border-style: solid;
+        padding: 5px;
+        padding-left: 20px;
+        border-radius: 15px;
+        margin: auto 10px;
+        height: 40px;
+        width: 100%;
+    }
+    .menu-desplegable{
+        height: 25px;
+        margin: 0 20px;
     }
 }

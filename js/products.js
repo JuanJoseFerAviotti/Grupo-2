@@ -72,7 +72,16 @@ document.addEventListener("DOMContentLoaded", function(e){
             p.description.toLowerCase().includes(texto)
         );
 
-        
+        showCarsList(filtrados);
+    });
+        document.getElementById("buscarInput2").addEventListener("input", (e) => {
+        const texto = e.target.value.toLowerCase();
+
+        const filtrados = carsArray.filter(p => 
+            p.name.toLowerCase().includes(texto) || 
+            p.description.toLowerCase().includes(texto)
+        );
+
         showCarsList(filtrados);
     });
 
