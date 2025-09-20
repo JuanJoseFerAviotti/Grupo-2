@@ -2,9 +2,6 @@ let carsArray = [];
 const categoryId = localStorage.getItem("catID")
 const url = PRODUCTS_URL + categoryId + ".json";
 
-
-
-
 function showCarsList(array){
     let htmlContentToAppend = "";
 
