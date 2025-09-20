@@ -5,15 +5,14 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
-
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-  
-  <!-- <link href="css/font-awesome.min.css" rel="stylesheet">
+  <!--<link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet"> -->
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/productstyletest.css" rel="stylesheet">-->
   <link href="css/productStyle.css" rel="stylesheet">
 </head>
-
+  
 <body>
   <header class="vertical_header" id="pc">
     <div class="vertical_header" id="prueba">
@@ -23,7 +22,9 @@
             <span class="bar"></span>
         </div>
       <div class="text-center p-4" id="listado-autos1">
-              <h2 strong>LISTADO DE PRODUCTOS</strong></h2>
+              <input type="search" id="buscarInput" placeholder="🔍   Buscar productos..." class="form-control mb-3">
+          </div>
+              
           </div>
     </div>
       
@@ -57,44 +58,49 @@
     </div>
   </nav>
 </header>
-  <section>
-  
-      <main role="main" class="pb-5">
+      <main class="pb-5">
           <div class="text-center p-4" id="listado-autos2">
-              <h2 ><strong>LISTADO DE PRODUCTOS</strong></h2>
+              <div class="encabezadoTitulo"><h2 ><strong>LISTADO DE PRODUCTOS</strong></h2></div>
+              <input type="search" id="buscarInput2" placeholder="🔍   Buscar productos..." class="form-control mb-3">
           </div>
 
-
-          
           <div class="container" id="Priority">
-              <div class="Container">
-<div class="filtro">
-        <h4>Filtros</h4>
-        <div>
-          <label for="minPrice">Precio mínimo:</label>
-          <input type="number" id="minPrice" placeholder="Mínimo">
+              
+                <div class="filtro">
+                  
+                  <div id="filter">
+                    <h4>Filtros</h4>
+                    <div class="filter1">
+                      <label for="minPrice">Precio mínimo:</label>
+                      <input type="number" id="minPrice" placeholder="Mínimo">
+                      <button id="filterBtn">Filtrar</button>
+                    </div>
+                    
+                    <div class="filter1" id="order">
+                      <label for="maxPrice">Precio máximo:</label>
+                      <input type="number" id="maxPrice" placeholder="Máximo">
+                      <button id="clearFilterBtn">Limpiar</button>
+                    </div>
+                  </div>
+                  <hr>
 
-          <label for="maxPrice">Precio máximo:</label>
-          <input type="number" id="maxPrice" placeholder="Máximo">
+                  <div id="Order">
+                    <h4>Ordenar Por</h4>
+                    <div id="Order1">
+                      <button id="sortAsc">Precio ↑</button>
+                      <button id="sortDesc">Precio ↓</button>
+                      <button id="sortRel">Relevancia</button>
+                    </div>
+                    
+                  </div>
 
-          <button id="filterBtn">Filtrar</button>
-          <button id="clearFilterBtn">Limpiar</button>
-        </div>
-
-        <div class="mt-3">
-          <button id="sortAsc">Precio ↑</button>
-          <button id="sortDesc">Precio ↓</button>
-          <button id="sortRel">Relevancia</button>
-        </div>
-        <input type="search" id="buscarInput" placeholder="Buscar productos..." class="form-control mb-3">
-
-      </div>
+              </div>
                
                   <div class="list-group" id="cat-list-container">
 
                   </div>
                   
-              </div>
+              
           </div>
           
       </main>
@@ -118,7 +124,6 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/init.js"></script>
     <script src="js/products.js"></script>
-  </section>
   <footer class="text-muted" id="Footer">
     <div class="container">
       <p class="float-end">
