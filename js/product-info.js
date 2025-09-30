@@ -49,11 +49,18 @@ function mostrarComentarios() {
             <div class="comentario">
                 <h4 class="usuario">${comentario.user}</h4>
                 <p class="descripcion">${comentario.description}</p>
+                <p class="fecha">${comentario.dateTime}</p>
+                <p class="puntuacion" style="text-align: end;">Puntuación: ${convertirEstrellas(comentario.score)}</p>
             </div>
             <hr>    
         `;
         comentarios.innerHTML += comentarioHTML;
     });
+}
+
+function convertirEstrellas(vote) {
+  let estrellas = Math.round(vote / 2);
+  return "★".repeat(estrellas) + "☆".repeat(5 - estrellas);
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
