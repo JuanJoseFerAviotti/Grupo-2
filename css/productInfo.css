@@ -116,9 +116,79 @@ header .container {
   transform: translateY(-2px);
 }
 
+.formulario-calificacion {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    color: #374151;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.rating-container {
+    display: flex;
+    gap: 8px;
+}
+
+.star {
+    font-size: 32px;
+    color: #d1d5db;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.active {
+    color: #fbbf24;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
 
 
-/* ENCABEZADO LISTA DE AUTOS */
+.btn-enviar {
+    width: 100%;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-enviar:hover {
+    background: #5568d3;
+}
+
+
 @media(min-width: 768px){
     #detalle{
     display: flex;
@@ -174,7 +244,7 @@ header .container {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-/* TARJETAS DE LOS AUTOS */
+
 section{
     height: 100%;
 }
@@ -233,7 +303,7 @@ section{
     margin: 0;
 }
 
-/* Footer */
+
 #Footer .container{
     transform: translateY(75px);
     display: flex;
