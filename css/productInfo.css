@@ -19,6 +19,7 @@
     height: 30px;
     background-color: black;
 }
+
 header hr{
     border: 0;
     margin-top: 20px;
@@ -52,6 +53,21 @@ header .container {
    
    margin-top: 10%;
 }
+.logo {
+      width: 75px;
+      height: 60px;
+      background: #202020; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #FFBB00;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      border-radius: 20px; /* rounds edges */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
 #detalle{
     display: flex;
     flex-direction: row;
@@ -90,7 +106,7 @@ header .container {
 
 #PR-titulo  {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    
     font-size: 30px;
     margin-top: 20px;
     font-weight: bold;
@@ -113,7 +129,7 @@ header .container {
     
 }
 .PR-name{
-    font-family: Arial, Helvetica, sans-serif;
+  
     font-size: 20px;
    margin: auto auto;
     font-weight: bold;
@@ -133,6 +149,12 @@ header .container {
 .list-group{
     margin-top: 120px;
 }
+.Agregar-comentario{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: bold;
+}
 .comentario {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -143,7 +165,7 @@ header .container {
 }
 
 .comentario:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   transform: translateY(-2px);
 }
 
@@ -153,7 +175,7 @@ header .container {
     background: white;
     border-radius: 12px;
     padding: 30px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
 }
 
 .form-group {
@@ -202,8 +224,8 @@ textarea:focus {
 }
 .btn-enviar {
     width: 100%;
-    background: #667eea;
-    color: white;
+    background: #FFBB00;
+    color: black;
     border: none;
     padding: 12px;
     border-radius: 8px;
@@ -214,7 +236,8 @@ textarea:focus {
 }
 
 .btn-enviar:hover {
-    background: #5568d3;
+    background: black;
+    color: white;
 }
 
 
