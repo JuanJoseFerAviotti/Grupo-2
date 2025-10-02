@@ -8,6 +8,34 @@ const url = PRODUCT_INFO_COMMENTS_URL + productoId + ".json";
 let calificacionSeleccionada = 0;
 const stars = document.querySelectorAll('.star');
 const form = document.getElementById('formCalificacion');
+const ProductoRelLugar = document.getElementById("productos-relacionados");
+
+const urlProducto = PRODUCT_INFO_URL + productoId + EXT_TYPE;
+let productoRelacionado = [];
+
+getJSONData(urlProducto).then(function(resultObj){
+    if (resultObj.status === "ok")
+    {
+        
+
+        productoRelacionado = resultObj.data.relatedProducts;
+        console.log(productoRelacionado);
+       productoRelacionado.forEach(element => {
+         ProductoRelLugar.innerHTML += `
+            
+            
+            <div class="PR-card">
+                    <img class="PR-Img" src="` + element.image + `" alt="` + element.name + `" class="img-thumbnail">
+                        <div class="PR-name">
+                            <h2>`+ element.name +`</h2>    
+                        </div>
+                </div>
+
+         `;
+       });
+    
+    }
+});
 
 
 stars.forEach(star => {
