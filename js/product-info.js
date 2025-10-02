@@ -41,7 +41,7 @@ form.addEventListener('submit', function(e) {
         return;
     }
     const nuevoComentario = {
-        user:localStorage.getItem("user"),
+        user: localStorage.getItem("usuario"),
         description: comentario,
         score: calificacionSeleccionada,
         dateTime: new Date().toISOString()
