@@ -4,27 +4,22 @@ const titulo = document.getElementById("listado-autos2");
 const titulo2 = document.getElementById("listado-autos1");
 const productoId = producto.id;
 let productoComentarios = [];
-const url = PRODUCT_INFO_COMMENTS_URL + productoId + ".json";
+const url = PRODUCT_INFO_COMMENTS_URL + productoId + EXT_TYPE;
 let calificacionSeleccionada = 0;
 const stars = document.querySelectorAll('.star');
 const form = document.getElementById('formCalificacion');
 const ProductoRelLugar = document.getElementById("productos-relacionados");
+let productos = [];
 
 const urlProducto = PRODUCT_INFO_URL + productoId + EXT_TYPE;
 let productoRelacionado = [];
 
-getJSONData(urlProducto).then(function(resultObj){
-    if (resultObj.status === "ok")
-    {
-        
-
-        productoRelacionado = resultObj.data.relatedProducts;
-        console.log(productoRelacionado);
-       productoRelacionado.forEach(element => {
+function mostrarProductosRelacionados(array) {
+    array.forEach(element => {
          ProductoRelLugar.innerHTML += `
             
             
-            <div class="PR-card">
+            <div class="PR-card" data-id="${element.id}">
                     <img class="PR-Img" src="` + element.image + `" alt="` + element.name + `" class="img-thumbnail">
                         <div class="PR-name">
                             <h2>`+ element.name +`</h2>    
@@ -33,9 +28,33 @@ getJSONData(urlProducto).then(function(resultObj){
 
          `;
        });
+       document.querySelectorAll(".PR-card").forEach(item => {
+        item.addEventListener("click", async () => {
+            const id = item.getAttribute("data-id");
+            
+            const urlProductoCompleto = PRODUCT_INFO_URL + id + EXT_TYPE;
+            
+            try {
+                const resultObj = await getJSONData(urlProductoCompleto);
+                
+                if (resultObj.status === "ok") {
+                    localStorage.setItem("productoSeleccionado", JSON.stringify(resultObj.data));
+                    window.location.reload();
+                }
+            } catch (error) {
+                console.error("Error al cargar el producto:", error);
+            }
+        });
+    });
+}
+
+
+        
+        
+
+       
     
-    }
-});
+    
 
 
 stars.forEach(star => {
@@ -89,7 +108,7 @@ form.addEventListener('submit', function(e) {
     if (producto) {
       detalle.innerHTML = `
         
-        <img src="${producto.image}" alt="${producto.name}" class="img-info" >
+        <img src="${producto.image|| producto.images[0]}" alt="${producto.name}" class="img-info" >
         <div id="Descripciontotal"> 
         <p id="precio"> ${producto.currency} ${producto.cost}</p>
         
@@ -146,8 +165,7 @@ function mostrarComentarios() {
 }
 
 function convertirEstrellas(vote) {
-  let estrellas = Math.round(vote / 2);
-  return "★".repeat(estrellas) + "☆".repeat(5 - estrellas);
+  return "★".repeat(vote) + "☆".repeat(5 - vote);
 }
 
 document.addEventListener("DOMContentLoaded", function(e){
@@ -158,4 +176,17 @@ document.addEventListener("DOMContentLoaded", function(e){
             mostrarComentarios();
         }
     });
+   
+
+    getJSONData(urlProducto).then(function(resultObj){
+        if (resultObj.status === "ok")
+        {
+            productos = resultObj.data;
+            productoRelacionado = resultObj.data.relatedProducts;
+            mostrarProductosRelacionados(productoRelacionado);
+        }
+    });
+
+    
+
 });
