@@ -1,7 +1,6 @@
 const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
 const detalle = document.getElementById("detalle");
-const titulo = document.getElementById("listado-autos2");
-const titulo2 = document.getElementById("listado-autos1");
+const titulo = document.getElementById("listado-autos");
 const productoId = producto.id;
 let productoComentarios = [];
 const url = PRODUCT_INFO_COMMENTS_URL + productoId + EXT_TYPE;
@@ -119,23 +118,11 @@ form.addEventListener('submit', function(e) {
         
       `;
       titulo.innerHTML = `<h2>${producto.name}</h2>`;
-      titulo2.innerHTML = `<h2>${producto.name}</h2>`;
     } else {
       detalle.textContent = "No se encontró información del producto.";
     }
     
-const desplegable = document.querySelector(".menu-desplegable");
-const navMenu = document.querySelector(".navbar-nav");
 
-desplegable.addEventListener("click", () => {
-    desplegable.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
-
-document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-    desplegable.classList.remove("active");
-    navMenu.classList.remove("active");
-}));
 
 function mostrarComentarios() {
     const comentarios = document.getElementById('comentarios');
