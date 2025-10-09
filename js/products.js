@@ -73,16 +73,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCarsList(filtrados);
     });
-        document.getElementById("buscarInput2").addEventListener("input", (e) => {
-        const texto = e.target.value.toLowerCase();
-
-        const filtrados = carsArray.filter(p => 
-            p.name.toLowerCase().includes(texto) || 
-            p.description.toLowerCase().includes(texto)
-        );
-
-        showCarsList(filtrados);
-    });
+     
 
 /*-----------------------Filtros---------------------*/
 
@@ -118,15 +109,5 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 });
 
-const desplegable = document.querySelector(".menu-desplegable");
-const navMenu = document.querySelector(".navbar-nav");
 
-desplegable.addEventListener("click", () => {
-    desplegable.classList.toggle("active");
-    navMenu.classList.toggle("active");
-});
 
-document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
-    desplegable.classList.remove("active");
-    navMenu.classList.remove("active");
-}));
