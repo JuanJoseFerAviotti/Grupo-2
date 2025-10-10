@@ -7,7 +7,7 @@
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/my-profile.css" rel="stylesheet">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <nav class="navbar navbar-expand-lg navbar-light p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.html">Inicio</a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
           </li>
@@ -51,12 +52,41 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
-    </div>
-  </main>
+    
+<div class="upper-band">
+    <div class="logo" >!</div>
+  </div>
+    <main class="login-box">
+      
+        <img src="img/Sample_User_Icon.png" class="rounded-circle border border-5"  id="userImage" alt="user">
+      
+       <div class="input-group mb-3">
+        
+ </div>
+ <button class="btn btn-warning">Actualizar</button>
+        <h2 id="textUser">Usuario</h2>
+        <p id="my-usuario">Usuario</p>
+        
+        <h2 id="textNombre">Nombre</h2>
+        <p id="my-nombre">Nombre</p>
+         <div class="input-group">
+        <input type="text" id="nameInput" class="form-control mx-5" placeholder="Nombre" aria-label="Recipient’s username" aria-describedby="button-addon2">
+ </div>
+        <button id="btn-actualizar-nombre"  class="btn btn-warning">Actualizar</button>
+        <h2 id="textNombre">Apellido</h2>
+        <p id="my-apellido">Apellido</p>
+        <div class="input-group">
+        <input type="text"  id="lastnameInput" class="form-control mx-5" placeholder="Apellido" aria-label="Recipient’s username" aria-describedby="button-addon2">
+ </div>
+        <button id="btn-actualizar-lastname" class="btn btn-warning">Actualizar</button>
+        <h2 id="textTelefono">Teléfono</h2>
+        <p id="my-telefono">Teléfono</p>
+         <div class="input-group">
+        <input type="text" id="phoneInput" class="form-control mx-5" placeholder="Teléfono"  aria-label="Recipient’s username" aria-describedby="button-addon2">
+ </div>
+        <button id="btn-actualizar-telefono" class="btn btn-warning">Actualizar</button>
+    </main>
+  
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
