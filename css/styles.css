@@ -177,7 +177,8 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
-}
+  margin-top: 100px;
+  }
 
 a.custom-card,
 a.custom-card:hover {
@@ -190,4 +191,45 @@ a.custom-card:hover {
 }
 #usuarioo{
   color: rgb(253, 254, 255);
+}
+#buscarInput{
+  width: 50%;
+  border-radius: 20px;
+}
+/* Barra de Navegacion  */
+.navbar-brand{
+  color: black;
+  font-weight: 800;
+}
+
+.principalNavBar{
+  height: 62px ;
+  background-color: #fb0; !important
+}
+#buscarInput{
+  background-color: #202020;
+}
+/* Desplegable offcanvas */
+
+.offcanvas-start{
+  background-color: #202020;
+}
+.offcanvas-header{
+  background-color: #303030;
+}
+.offcanvas-title{
+  color: #fb0;
+}
+.nav-link{
+  color: #fff !important;
+}
+/* Filtro */
+
+.filtro{
+  display: flex;
+  align-content: center;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 5px #000 ;
 }
