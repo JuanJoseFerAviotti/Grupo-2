@@ -26,49 +26,49 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
+            <a class="nav-link" aria-current="page" href="#">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" href="#">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Vender</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+              Usuario
             </a>
             <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+              <li><a class="dropdown-item" href="#">Mis Compras</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
             </ul>
           </li>
         </ul>
       </div>
     </div>
-    <a class="navbar-brand" href="#">Listado de Productos</a>
+    <a class="navbar-brand" id="TextoPrincipal" href="#">Listado de Productos</a>
+    
     <input type="search" id="buscarInput" placeholder="🔍   Buscar productos..." class="form-control navbar-brand">  
   </div>
 </nav>
   <main class="pb-5">
- 
-
-          <div class="container" id="Priority">
-              
-                <div class="filtro">
+ <div class="filtro ">
                   
                   <div id="filter">
                     <h4>Filtros</h4>
                     <div class="filter1">
                       <label for="minPrice">Precio mínimo:</label>
-                      <input type="number" id="minPrice" placeholder="Mínimo">
+                      <input type="number" id="minPrice" placeholder="Precio mínimo">
                       <button id="filterBtn">Filtrar</button>
                     </div>
                     
                     <div class="filter1" id="order">
                       <label for="maxPrice">Precio máximo:</label>
-                      <input type="number" id="maxPrice" placeholder="Máximo">
+                      <input type="number" id="maxPrice" placeholder="Precio máximo">
                       <button id="clearFilterBtn">Limpiar</button>
                     </div>
                   </div>
@@ -76,17 +76,20 @@
 
                   <div id="Order">
                     <h4>Ordenar Por</h4>
-                    <div id="Order1">
-                      <button id="sortAsc">Precio ↑</button>
-                      <button id="sortDesc">Precio ↓</button>
-                      <button id="sortRel">Relevancia</button>
-                    </div>
+                    <select id="Order1" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option id="sortAsc" value="1">Precio ↑</option>
+                    <option id="sortDesc" value="2">Precio ↓</option>
+                    <option id="sortRel" value="3">Relevancia</option>
+                    </select>
                     
                   </div>
 
               </div>
-               
-                  <div class="list-group" id="cat-list-container">
+
+          <div class="container py-5" id="Priority">
+              
+                  <div class="row g-4" id="contenedorDeProductos">
 
                   </div>
                   

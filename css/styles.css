@@ -196,15 +196,34 @@ a.custom-card:hover {
   width: 50%;
   border-radius: 20px;
 }
+/* general */
+
+*{
+  transition: all ease 0.5s;
+}
 /* Barra de Navegacion  */
+
 .navbar-brand{
+  margin: 0 10px;
   color: black;
   font-weight: 800;
 }
+@media(max-width: 768px){
+  #TextoPrincipal{
+    width: 1px;
+    display: none;
+  }
+  .container-fluid{
+    justify-content: left !important;
+  }
+  #buscarInput{
+    width: 75%;
+  }
 
+}
 .principalNavBar{
   height: 62px ;
-  background-color: #fb0; !important
+  background-color: #fb0 !important;
 }
 #buscarInput{
   background-color: #202020;
@@ -226,10 +245,138 @@ a.custom-card:hover {
 /* Filtro */
 
 .filtro{
-  display: flex;
-  align-content: center;
-  padding: 20px;
-  margin: 10px;
+    background-color: #E0E0E0;
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    float: inline-start;
+    padding: 20px;
+    box-shadow: 1px 1px 5px #000 ;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+}
+#filter{
+    background-color: #E0E0E0;
+    width: 50%;
+    border-color: black;
+    border-width: 11px;
+}
+.filter1{
+    margin-bottom: 10px;
+}
+.filter1 input{
+    border-radius: 15px;
+    padding: 7px;
+}
+#Order{
+    display: block;
+    align-items: center;
+    margin: 0 auto;
+    width: 50%;
+    
+}
+#Order1{
+    font-weight: 800;
+    border-radius: 15px;
+    background-color: #FFBB00;
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px;
+    margin: 20px 40px;
+    width: 80%;
+}
+#Order :focus{
   border-radius: 15px;
-  box-shadow: 1px 1px 5px #000 ;
+}
+#Order button{
+  margin: 0 auto;
+    width: 25%;
+}
+
+.filtro input ,button{
+    border-style: solid ;
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+}
+.filtro button{
+    border-radius: 15px;
+    padding: 7px;
+    background-color: #FFBB00;
+    font-weight: bold;
+}
+.filtro h4{
+    margin: 10px 0;
+    text-align: center;
+}
+.filtro hr{
+    margin: 0;
+}
+@media(max-width: 1033px){
+  .filter1 label{
+    display: none;
+  }
+}
+@media(max-width: 751px){
+  #filter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100% !important;
+  }
+  .filtro{
+    min-height: 280px;
+    width: 95%;
+    height: 30vh;
+    flex-direction: column;
+  }
+}
+
+/* Contenedor principal */
+
+.pb-5{
+  display: flex;
+  flex-direction: column;
+}
+/* Contenedor de productos */
+
+.container{
+  display: flex;
+}
+
+/* etiqueta de productos */
+.text-primary{
+  color: #000 !important;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+.compra{
+        border-radius:15px 15px 0 0 ;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        font-weight: 900;
+        text-align: center;
+        width: 200px;
+        margin: 0px auto;
+        height: 50px;
+        padding: 12.5px;
+        background-color: #FFBB00;
+        display: block;
+}
+.card{
+      border-radius: 1.25rem;
+      height: 500px !important;
+}
+.card:hover{
+  
+}
+.shadow-sm:hover{
+  transform: scale(1.5);
+  transform: translateY(-10px);
+  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5) !important;
+}
+.card-img, .card-img-top {
+    border-top-left-radius: calc(1.25rem - 1px);
+    border-top-right-radius: calc(1.25rem - 1px);
 }
