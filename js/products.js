@@ -2,43 +2,31 @@ let carsArray = [];
 const categoryId = localStorage.getItem("catID")
 const url = PRODUCTS_URL + categoryId + ".json";
 
-
-
-
 function showCarsList(array){
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action producto-item" data-id="${product.id}">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + product.image + `" alt="` + product.name + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <div class="mb-1">
-                        <h4>`+ product.name +`</h4> 
-                        <hr>
-                        <p class = "precio" ><strong> `+ product.currency + product.cost +`</strong></p>
-                        <small class="text-muted">` + product.soldCount + ` vendidos</small>
-                        <p> `+ product.description +`</p> 
-                        
-                        </div>
-                         
+        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm">
+          <img src="` + product.image + `" class="card-img-top" alt="Producto 1">
+          <div class="card-body">
+            <h3 class="card-title">`+ product.name +`</h5>
+            <p class="card-text">`+ product.description +`</p>
+            <p class="text-primary fw-bold">`+ product.currency + product.cost +`</p>
+            </div>
+                <div class = "compra ">
+                    <div class = "subcompra">
+                        <p>Añadir a carrito</p>
                     </div>
-
                 </div>
             </div>
-            <div class = "compra">
-                <div class = "subcompra">
-                    <p>Añadir a carrito</p>
-                </div>
             </div>
         </div>
+      
         `
-        document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+        document.getElementById("contenedorDeProductos").innerHTML = htmlContentToAppend; 
     }
        document.querySelectorAll(".producto-item").forEach(item => {
         item.addEventListener("click", () => {
@@ -64,6 +52,8 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
     
+/*---------------------Buscador-------------------- */
+
     document.getElementById("buscarInput").addEventListener("input", (e) => {
         const texto = e.target.value.toLowerCase();
 
@@ -76,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
      
 
+/*-----------------------Filtros---------------------*/
 
     document.getElementById("filterBtn").addEventListener("click", () => {
         let min = parseInt(document.getElementById("minPrice").value) || 0;
@@ -91,13 +82,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCarsList(carsArray);
     });
 
-
-
-
-
-
-
-
+/* --------------------Ordenamiento---------------------------*/
 
     document.getElementById("sortAsc").addEventListener("click", () => {
         let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
@@ -113,7 +98,22 @@ document.addEventListener("DOMContentLoaded", function(e){
         let sorted = [...carsArray].sort((a, b) => b.soldCount - a.soldCount);
         showCarsList(sorted);
     });
-});
+/* --------------------Ordenamiento---------------------------*/
 
+    document.getElementById("Order1").addEventListener("change", (e) => {
+        const value = e.target.value
+        let sorted = []
+        if (value == 1){
+        let sorted = [...carsArray].sort((a, b) => a.cost - b.cost);
+        showCarsList(sorted);
+        } else if (value==2){
+        let sorted = [...carsArray].sort((a, b) => b.cost - a.cost);
+        showCarsList(sorted);
+        } else if (value==3){
+        let sorted = [...carsArray].sort((a, b) => b.soldCount - a.soldCount);
+        showCarsList(sorted);
+        }
+    });
+});
 
 
