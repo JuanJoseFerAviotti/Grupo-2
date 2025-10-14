@@ -8,37 +8,57 @@
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/productInfo.css" rel="stylesheet">
-</head>
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/productInfo.css">
+</head> 
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <header class="vertical_header" id="pc">
+    <div class="vertical_header" id="prueba">
+       <div class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+      <div class="text-center p-4" id="listado-autos1">
+              <h2 strong>Nombre</strong></h2>
+          </div>
+    </div>
+      
+  <nav class="navbar">
     <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+       <div class="logo" id="logo2">!</div>
+    
+      <hr class="linea">
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
+        <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="index.html"><img src="img/Inicio.png"></a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html"><img src="img/Categorias.png"></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
+            <a class="nav-link" href="sell.html"><img src="img/Vender.png"></a>
           </li>
         </ul>
+        
+        <div class="menu-desplegable">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+         
       </div>
     </div>
   </nav>
-  <main role="main" class="pb-5">
-          <div class="text-center p-4" id="listado-autos">
-              
+</header>
+  <section>
+  
+      <main role="main" class="pb-5">
+          <div class="text-center p-4" id="listado-autos2">
+              <h2 ><strong>LISTADO DE PRODUCTOS</strong></h2>
           </div>
 
 
@@ -103,25 +123,18 @@
         <div></div>
       </div>
     </div>
-  <footer class="text-muted">
+    
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
+  </section>
+  <footer class="text-muted" id="Footer">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p id="JAP">Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
 </body>
-
 </html>
