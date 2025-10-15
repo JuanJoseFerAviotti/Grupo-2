@@ -245,6 +245,8 @@ a.custom-card:hover {
 }
 /* Filtro */
 
+/* Filtro */
+
 .filtro{
     background-color: #E0E0E0;
     width: 80%;
@@ -326,10 +328,17 @@ a.custom-card:hover {
     align-items: center;
     width: 100% !important;
   }
+  #Order{
+    width: 100% !important;
+  }
+  #Order1{
+    margin: 20px auto;
+    width: 90%;
+  }
   .filtro{
     min-height: 280px;
     width: 95%;
-    height: 30vh;
+    height: auto;
     flex-direction: column;
   }
 }
@@ -369,9 +378,7 @@ a.custom-card:hover {
       border-radius: 1.25rem;
       height: 500px !important;
 }
-.card:hover{
-  
-}
+
 .shadow-sm:hover{
   transform: scale(1.5);
   transform: translateY(-10px);
