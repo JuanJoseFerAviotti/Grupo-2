@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(){
   if (!loggedIn) {
     window.location.href = "login.html";
   } else {
-    usuarioDiv.textContent =`Hola ${usuario}`;
+    usuarioDiv.textContent =`${usuario}`;
   }
 
 

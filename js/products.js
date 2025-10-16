@@ -1,6 +1,6 @@
 let carsArray = [];
 const categoryId = localStorage.getItem("catID")
-const url = PRODUCTS_URL + categoryId + ".json";
+const url = PRODUCTS_URL + categoryId + EXT_TYPE;
 
 function showCarsList(array){
     let htmlContentToAppend = "";
@@ -8,9 +8,9 @@ function showCarsList(array){
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-        <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 producto-item" data-id="` + product.id + `">
         <div class="card h-100 shadow-sm">
-          <img src="` + product.image + `" class="card-img-top" alt="Producto 1">
+          <img src="` + product.image + `" class="card-img-top" alt="` + product.name + `">
           <div class="card-body">
             <h3 class="card-title">`+ product.name +`</h5>
             <p class="card-text">`+ product.description +`</p>

@@ -1,4 +1,4 @@
-.jumbotron,
+ .jumbotron,
 .card-body,
 .container,
 .site-header {
@@ -177,6 +177,7 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
+  margin-top: 70px;
 }
 
 a.custom-card,
@@ -192,25 +193,188 @@ a.custom-card:hover {
   color: rgb(253, 254, 255);
 }
 
+
+
+*{
+  transition: all ease 0.5s;
+}
+.navbar-brand{
+  margin: 0 10px;
+  color: black;
+  font-weight: 800;
+}
+@media(max-width: 768px){
+  #TextoPrincipal{
+    width: 1px;
+    display: none;
+  }
+  .container-fluid{
+    justify-content: left !important;
+  }
+
+}
+.principalNavBar{
+  height: 62px ;
+  background-color: #fb0 !important;
+}
+
+
+.offcanvas-start{
+  background-color: #202020;
+}
+.offcanvas-header{
+  background-color: #303030;
+}
+.offcanvas-title{
+  color: #fb0;
+}
+.nav-link{
+  color: #fff !important;
+}
+
+
+
+#PR-titulo  {
+    text-align: center;
+    
+    font-size: 30px;
+    margin-top: 20px;
+    font-weight: bold;
+} 
+.PR-Img{
+    border-radius: 30px 0px 0px 30px;
+    display: block;
+    width: auto;
+    height: 100%;
+}
+
+.PR-card {
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+    height: 30%;
+    border-radius: 40px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    background-color: white;
+    
+}
+.PR-name{
+  
+    font-size: 20px;
+   margin: auto auto;
+    font-weight: bold;
+}
+
+ */
+
+.navbar-toggler{
+    margin-left: 16px;
+    width: 30px;
+    height: 30px;
+    background-color: black;
+}
+
+.navbar-nav{
+    padding: 0;
+}
+
+#Priority{
+    margin-top: 80px;
+}
+
+#detalle{
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    height: 550px;
+    border-radius: 40px;
+    box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+    background-color: white;
+    margin: 100px auto 0 auto;
+}
+
+
+#PR-titulo {
+    text-align: center;
+    font-size: 32px;
+    font-weight: bold;
+    color: #1f2937;
+    margin: 40px 0 20px 0;
+}
+
+#productos-relacionados {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.PR-card {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.PR-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.PR-Img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+.PR-name {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.PR-name h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.4;
+    text-align: center;
+}
+
+
 .Agregar-comentario{
     text-align: center;
     font-size: 30px;
     margin-top: 20px;
     font-weight: bold;
 }
+
 .comentario {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 16px;
-  transition: all 0.3s ease;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
 }
 
 .comentario:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
 }
+
 
 .formulario-calificacion {
     max-width: 500px;
@@ -265,6 +429,7 @@ textarea:focus {
     outline: none;
     border-color: #667eea;
 }
+
 .btn-enviar {
     width: 100%;
     background: #FFBB00;
@@ -283,3 +448,109 @@ textarea:focus {
     color: white;
 }
 
+
+.compra{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    border-radius: 0px 0px 15px 15px;
+    text-align: center;
+    width: 200px;
+    margin: 0px auto;
+    height: 30px;
+    padding: 12.5px;
+    background-color: #FFBB00;
+    display: block;
+}
+
+.subcompra p{
+    margin: 0;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    min-height: calc(100vh - 210px);
+    margin-top: 70px;
+}
+
+.pb-5{
+    width: 100%;
+    padding-bottom: 3rem;
+}
+
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+footer p {
+    margin-bottom: .25rem;
+}
+
+@media(min-width: 900px){
+    #detalle{
+        display: flex;
+        flex-direction: row;
+        width: 95%;
+        height: 70%;
+        border-radius: 40px;
+        box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+        background-color: white;
+        margin: 100px auto 0 auto;
+    }
+
+    #productos-relacionados {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 30px;
+        padding: 30px;
+    }
+}
+
+@media(max-width: 900px){
+    #productos-relacionados {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .PR-card {
+        width: 100%;
+    }
+
+    .PR-Img {
+        height: 100;
+    }
+
+    .PR-name h2 {
+        font-size: 16px;
+    }
+
+    #detalle{
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        border-radius: 40px;
+        box-shadow: rgb(0, 0, 0) 0px 0px 5px;
+        background-color: white;
+        margin: 150px auto 0 auto;
+    }
+
+    .compra{
+        font-size: 16px;
+        width: 150px;
+    }
+
+    .pb-5{
+        width: 100%;
+    }
+
+    #Priority {
+        margin-top: 100px;
+    }
+}
