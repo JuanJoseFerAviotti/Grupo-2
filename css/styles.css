@@ -195,6 +195,7 @@ a.custom-card:hover {
 #buscarInput{
   width: 50%;
   border-radius: 20px;
+  color: white;
 }
 /* general */
 
@@ -217,7 +218,7 @@ a.custom-card:hover {
     justify-content: left !important;
   }
   #buscarInput{
-    width: 75%;
+    width: 90%;
   }
 
 }
@@ -242,6 +243,8 @@ a.custom-card:hover {
 .nav-link{
   color: #fff !important;
 }
+/* Filtro */
+
 /* Filtro */
 
 .filtro{
@@ -325,10 +328,17 @@ a.custom-card:hover {
     align-items: center;
     width: 100% !important;
   }
+  #Order{
+    width: 100% !important;
+  }
+  #Order1{
+    margin: 20px auto;
+    width: 90%;
+  }
   .filtro{
     min-height: 280px;
     width: 95%;
-    height: 30vh;
+    height: auto;
     flex-direction: column;
   }
 }
@@ -368,9 +378,7 @@ a.custom-card:hover {
       border-radius: 1.25rem;
       height: 515px !important;
 }
-.card:hover{
-  
-}
+
 .shadow-sm:hover{
   transform: scale(1.5);
   transform: translateY(-10px);
