@@ -120,14 +120,14 @@ document.addEventListener("DOMContentLoaded", function(e){
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded", function(){
     const loggedIn = localStorage.getItem("loggedIn");
-    const usuario = localStorage.getItem("usuario");
+    const User = JSON.parse(localStorage.getItem("Usuario"));
   const usuarioDiv = document.getElementById("usuarioo");
   console.log("Elemento li:", usuarioDiv);
 
   if (!loggedIn) {
     window.location.href = "login.html";
   } else {
-    usuarioDiv.textContent =`${usuario}`;
+    usuarioDiv.textContent = User.usuario;
   }
 
 

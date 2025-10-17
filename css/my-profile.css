@@ -1,5 +1,19 @@
+*{
+  transition: all 0.5s ease;
+}
 
-
+html, body {
+  display: flex;
+  height: 100%;
+  margin: 0;
+  flex-direction: column;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  font-family: sans-serif;
+}
 
 .upper-band{
   background: var(--yellow);
@@ -21,11 +35,6 @@
   margin-top: 100px;
   margin-bottom: 40px;
   
-}
-.container{
-  background-color: #ffc800;
-  ;
- 
 }
 .navbar{
   background-color: #ffc800;
@@ -78,31 +87,16 @@ img#userImage{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  
 }
-.line{
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+#contenedorDeProfileInfo h2{
+  height: 50%;
+  margin: 0;
 }
-#contenedorDelBotonP{
-  
-  flex-direction: row-reverse;
-  width: 70vh;
-  display: flex;
-}
-.btUpdateP:hover{
-  transform: scaleX(1.1);
-  font-weight: 900;
-
-}
-.btUpdateP{
-  transition: all 1s ease;
-  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
-  border-radius:0 0 15px 15px ;
-  width: 15vw;
-  height: 8vw;
+#contenedorDeProfileInfo p{
+  transform: translateY(7px);
+  height: 50%;
+  margin: 0;
+  margin-top: 5%;
 }
 #contenedorDeProfileInfoEditing{
   border-radius: 15px;
@@ -111,7 +105,147 @@ img#userImage{
   display: none;
   flex-direction: row;
   justify-content: space-evenly;
+}
+#contenedorDeProfileInfoEditing h2{
+  font-size: 2rem;
+  height: 50%;
+  margin: 0;
+}
+#contenedorDeProfileInfoEditing p{
+  transform: translateY(7px);
+  height: 50%;
+  margin: 0;
+  margin-top: 5%;
+}
+#contenedorDeProfileInfoEditing input{
+  border-style: solid;
   
+  transform: translateX(-11.5px);
+  
+  padding-left: 10px;
+  border-radius: 20px;
+  height: 30%;
+  margin: 0;
+  margin-top: 4.5%;
 }
 
+.line{
+  width: 30%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.lineBlock{
+  height: 30%;
+}
+.line input{
+  width: 90%;
+}
+#contenedorDelBotonP{
+  flex-direction: row-reverse;
+  width: 70vh;
+  display: flex;
+  z-index: 20;
+}
+#btUpdateP:hover{
+  transform: translateY(1px);
+  scale: 1.05;
+  box-shadow: 0 .6rem 1rem rgba(0, 0, 0, .5);
 
+}
+#btUpdateP{
+  background-color: #FFBB00;
+  margin-right: 4%;
+  border: 0;
+  transition: all 1s ease;
+  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
+  border-radius:0 0 15px 15px ;
+  width: 130px;
+  height: 45px;
+}
+
+footer {
+  margin-top: auto;
+  background: #FFBB00;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  bottom: 0;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+}
+@media (min-width: 992px) {
+  #contenedorDeProfileInfo{
+    flex: 0 0 auto;
+    width: 100%;
+  }
+   #contenedorDeProfileInfoEditing{
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  #contenedorMain{
+    width: 550px;
+  }
+  #contenedorDeProfileInfo{
+    flex: 0 0 auto;
+    width: 550px !important;
+  }
+  #contenedorDeProfileInfoEditing{
+    flex: 0 0 auto;
+    width: 550px !important;
+  }
+  .lineBlock{
+  height: 40%;
+  }
+  #contenedorDelBotonP{
+    width: 550px;
+  }
+  #contenedorDelBotonP{
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  #ContenedorMain{
+    flex-direction: column;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+  }
+  #contenedorDeProfileInfo{
+    flex-direction: column;
+    width: 320px !important;
+  }
+
+  #contenedorDeProfileInfoEditing{
+    flex-direction: column;
+    width: 320px !important;
+  }
+  .line{
+    height: 300px;
+    width: 320px;
+    margin-left: 20px;
+    flex-direction: column;
+  }
+  #contenedorSize{
+    width: 320px;
+  }
+  .lineBlock{
+    height: 125px;
+    flex-direction: column;
+  }
+  #contenedorDelBotonP{
+    width: 100%;
+  }
+  footer p{
+    font-size: 0.7rem;
+  }
+}

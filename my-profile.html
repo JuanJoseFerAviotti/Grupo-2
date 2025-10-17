@@ -71,9 +71,10 @@
     </form>
   </div>
 </nav>
-  <main>
-    <main class="login-box">
-    <div id="contenedorDeProfileInfo">
+  <main id="ContenedorMain">
+    <div class="login-box">
+      <div id="contenedorSize">
+    <div id="contenedorDeProfileInfo" >
       <div class="line">
         <div>
          <img src="img/Sample_User_Icon.png" class="rounded-circle border border-5"  id="userImage" alt="user">
@@ -84,22 +85,22 @@
         </div>
       </div>
       <div class="line">
-        <div>
+        <div class="lineBlock">
           <h2 id="textNombre">Nombre</h2>
           <p id="my-nombre">Nombre</p>
         </div>
-        <div>
+        <div class="lineBlock">
           <h2 id="textTelefono">Teléfono</h2>
           <p id="my-telefono">Teléfono</p>
         </div>
         
       </div>
       <div class="line">
-        <div>
+        <div class="lineBlock">
           <h2 id="textNombre">Apellido</h2>
           <p id="my-apellido">Apellido</p>
         </div>
-        <div>
+        <div class="lineBlock">
           <h2 id="textEMail">E-mail</h2>
           <p id="my-EMail">E-mail</p>
         </div>
@@ -112,54 +113,43 @@
         </div>
         <div>
           <h2 id="textUser">Usuario</h2>
-          <p id="my-usuario">Usuario</p>
+          <p id="my-usuarioEdit"></p>
         </div>
       </div>
       <div class="line">
-        <div>
+        <div class="lineBlock">
           <h2 id="textNombre">Nombre</h2>
           <input type="text" id="nameInput" class="" placeholder="Nombre" aria-label="Recipient’s username" aria-describedby="button-addon2">
         </div>
-        <div>
+        <div class="lineBlock">
           <h2 id="textTelefono">Teléfono</h2>
           <input type="text" id="phoneInput" class="" placeholder="Teléfono"  aria-label="Recipient’s username" aria-describedby="button-addon2">
         </div>
       </div>
       <div class="line">
-        <div>
+        <div class="lineBlock">
           <h2 id="textNombre">Apellido</h2>
           <input type="text"  id="lastnameInput" class="" placeholder="Apellido" aria-label="Recipient’s username" aria-describedby="button-addon2">
         </div>
-        <div>
+        <div class="lineBlock"> 
           <h2 id="textEMail">E-mail</h2>
           <input type="text"  id="eMailInput" class="" placeholder="E-Mail" aria-label="Recipient’s username" aria-describedby="button-addon2">
         </div>
       </div>
     </div>
-    <div class="input-group">
     <div id="contenedorDelBotonP">
-      <button class="btn btn-warning " id="btUpdateP" >Actualizar</button>
+      <button id="btUpdateP" >Actualizar</button>
     </div>
+    </div>
+  
   </div>
        
-
-       <div class="input-group mb-3">
- </div>
-         <div class="input-group">
-        
- </div>
-        <div class="input-group">
-        
- </div>
-         <div class="input-group">
-        
- </div>
-    </main>
   
-  <footer class="text-muted">
+</main>
+<footer class="text-muted">
     <div class="container">
-      <p class="float-end">
-        <a href="#">Volver arriba</a>
+      <p class="">
+        <a href="principalNavBar">Volver arriba</a>
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
