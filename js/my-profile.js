@@ -1,17 +1,89 @@
 document.addEventListener("DOMContentLoaded", function(){
+  /* Generales */
+  const contenedorInfoVisible = document.getElementById('contenedorDeProfileInfo')
+  const contenedorEditable = document.getElementById('contenedorDeProfileInfoEditing')
+  const updateButton = document.getElementById('btUpdateP')
+  /* Contenedor Visible */
+  const TextName = document.getElementById('my-nombre')
+  const TextLastName = document.getElementById('my-apellido')
+  const TextNumber = document.getElementById('my-telefono')
+  const TextEMail = document.getElementById('my-EMail')
+  /* Contenedor Editable */
+  const InputName = document.getElementById('nameInput')
+  const InputLastName = document.getElementById('lastnameInput')
+  const InputPhone = document.getElementById('phoneInput')
+  const InputEMail = document.getElementById('eMailInput')
+
+
+  const datosGuardados = JSON.parse(localStorage.getItem("perfilUsuario"));
+  if (datosGuardados) {
+    TextName.textContent = datosGuardados.nombre;
+    TextLastName.textContent = datosGuardados.apellido;
+    TextNumber.textContent = datosGuardados.telefono;
+    TextEMail.textContent = datosGuardados.email;
+
+    InputName.value = datosGuardados.nombre;
+    InputLastName.value = datosGuardados.apellido;
+    InputPhone.value = datosGuardados.telefono;
+    InputEMail.value = datosGuardados.email;
+  }
+  /* Estado inicial */
+  contenedorInfoVisible.style.display = 'flex'
+  contenedorEditable.style.display = 'none'
+  updateButton.textContent = 'Editar'
+  const perfilUsuario = {
+  nombre : InputName.value.trim('Name'),
+  apellido : InputLastName.value.trim('LastName'),
+  telefono : InputPhone.value.trim(091000000),
+  email: InputEMail.value.trim('useremail@example.com')
+};
+localStorage.setItem("perfilDeUsuario",JSON.stringify(perfilUsuario));
+  /* function */
+
+  updateButton.addEventListener('click',()=>{
+    
+    if (contenedorEditable.style.display === 'none'){
+      contenedorInfoVisible.style.display = 'none';
+      contenedorEditable.style.display = 'flex';
+      updateButton.textContent = 'Guardar';
+    
+    }else{
+      const nombre = InputName.value.trim() || 'Nombre'
+      const apellido = InputLastName.value.trim() || 'Apellido'
+      const numero = InputPhone.value.trim() || 'Telefono'
+      const email = InputEMail.value.trim() || 'EMail'
+    
+    TextName.textContent = nombre
+    TextLastName.textContent = apellido
+    TextNumber.TextNumber = numero
+    TextEMail.textContent = email
+    const perfilUsuario = { nombre, apellido, numero, email };
+      localStorage.setItem("perfilUsuario", JSON.stringify(perfilUsuario));
+        contenedorInfoVisible.style.display = 'flex'
+  contenedorEditable.style.display = 'none'
+  updateButton.textContent = 'Editar'
+}
+    
+  })
+
+/* Usuario */
+
+      // Save on Enter key
+    phoneInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') saveTEButton.click();
+    });
+
+    // Block non-numeric input
+    phoneInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    });
+});
+/* Funcion mostrar perfil extraida de index.js */
+document.addEventListener("DOMContentLoaded", function(){
     const loggedIn = localStorage.getItem("loggedIn");
     const usuario = localStorage.getItem("usuario");
-  const usuarioDiv = document.getElementById("my-usuario");
-  const nameInput = document.getElementById('nameInput');
-    const saveButton = document.getElementById('btn-actualizar-nombre');
-  const mynombre = document.getElementById('my-nombre');
-   const lastnameInput = document.getElementById('lastnameInput');
-    const saveLNButton = document.getElementById('btn-actualizar-lastname');
-  const myApellido = document.getElementById('my-apellido');
-    const phoneInput = document.getElementById('phoneInput');
-    const saveTEButton = document.getElementById('btn-actualizar-telefono');
-  const myTelefono = document.getElementById('my-telefono');
-    console.log("Elemento li:", usuarioDiv);
+  const usuarioDiv = document.getElementById("usuarioo");
+  console.log("Elemento li:", usuarioDiv);
 
   if (!loggedIn) {
     window.location.href = "login.html";
@@ -24,100 +96,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
       window.location.href = "login.html";
     }
-  //actualiza nombre
-   const savedName = localStorage.getItem('Name');
-    if (savedName) {
-      mynombre.textContent = `${savedName}`;
-    }
-
-    let editingName = false;
-
-    saveButton.addEventListener('click', () => {
-      if (!editingName) {
-        
-        nameInput.style.display = 'inline';
-        nameInput.focus();
-        saveButton.textContent = 'Guardar';
-        editingName = true;
-      } else {
-       
-        const newName = nameInput.value.trim();
-
-        if (newName) {
-          localStorage.setItem('Name', newName);
-          mynombre.textContent = `${newName}`;
-        }
-
-        nameInput.style.display = 'none';
-        saveButton.textContent = 'Actualizar';
-        editingName = false;
-      }
+    document.getElementById("autos").addEventListener("click", function() {
+        localStorage.setItem("catID", 101);
+        window.location = "products.html"
     });
-    //actualiza apellido
-    const savedApellido = localStorage.getItem('Apellido');
-    if (savedApellido) {
-      myApellido.textContent = `${savedApellido}`;
-    }
-
-    let editingApellido = false;
-
-    saveLNButton.addEventListener('click', () => {
-      if (!editingApellido) {
-
-        lastnameInput.style.display = 'inline';
-        lastnameInput.focus();
-        saveLNButton.textContent = 'Guardar';
-        editingApellido = true;
-      } else {
-       
-        const newName = lastnameInput.value.trim();
-
-        if (newName) {
-          localStorage.setItem('Apellido', newName);
-          myApellido.textContent = `${newName}`;
-        }
-
-        lastnameInput.style.display = 'none';
-        saveLNButton.textContent = 'Actualizar';
-        editingApellido = false;
-      }
+    document.getElementById("juguetes").addEventListener("click", function() {
+        localStorage.setItem("catID", 102);
+        window.location = "products.html"
     });
-    //actualiza telefono
-    const savedTelefono = localStorage.getItem('Telefono');
-    if (savedTelefono) {
-      myTelefono.textContent = `${savedTelefono}`;
-    }
-
-    let editingTelefono = false;
-
-    saveTEButton.addEventListener('click', () => {
-      if (!editingTelefono) {
-
-        phoneInput.style.display = 'inline';
-        phoneInput.focus();
-        saveTEButton.textContent = 'Guardar';
-        editingTelefono = true;
-      } else {
-       
-        const newName = phoneInput.value.trim();
-
-        if (newName) {
-          localStorage.setItem('Telefono', newName);
-          myTelefono.textContent = `${newName}`;
-        }
-
-        phoneInput.style.display = 'none';
-        saveTEButton.textContent = 'Actualizar';
-        editingTelefono = false;
-      }
-    });
-      // Save on Enter key
-    phoneInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') saveTEButton.click();
-    });
-
-    // Block non-numeric input
-    phoneInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
+    document.getElementById("muebles").addEventListener("click", function() {
+        localStorage.setItem("catID", 103);
+        window.location = "products.html"
     });
 });

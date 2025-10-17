@@ -18,7 +18,7 @@
   justify-content: center;
   align-items: center;
   background: var(--bg);
-  margin-top: 40px;
+  margin-top: 100px;
   margin-bottom: 40px;
   
 }
@@ -44,6 +44,13 @@ img#userImage{
   object-fit: cover;
   margin-bottom: 20px;
 }
+.bi-exclamation-tirangle-fill{
+  scale: 1.5;
+}
+.navbar-toggler{
+  height: 50px !important;
+  width: 50px;
+}
 .logo {
       width: 150px;
       height: 150px;
@@ -64,7 +71,47 @@ img#userImage{
   --bg: #ffffff;
   --text: #222;
 }
+#contenedorDeProfileInfo{
+  border-radius: 15px;
+  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
+  width: 75vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+}
+.line{
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#contenedorDelBotonP{
+  
+  flex-direction: row-reverse;
+  width: 70vh;
+  display: flex;
+}
+.btUpdateP:hover{
+  transform: scaleX(1.1);
+  font-weight: 900;
 
-
+}
+.btUpdateP{
+  transition: all 1s ease;
+  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
+  border-radius:0 0 15px 15px ;
+  width: 15vw;
+  height: 8vw;
+}
+#contenedorDeProfileInfoEditing{
+  border-radius: 15px;
+  box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
+  width: 75vh;
+  display: none;
+  flex-direction: row;
+  justify-content: space-evenly;
+  
+}
 
 
