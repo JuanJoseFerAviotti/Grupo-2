@@ -120,4 +120,61 @@ document.addEventListener("DOMContentLoaded", function(){
     phoneInput.addEventListener('input', (e) => {
       e.target.value = e.target.value.replace(/[^0-9]/g, '');
     });
+
+    // Modo oscuro/claro
+const body = document.body;
+    const button = document.getElementById("modeButton");
+  
+
+   
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      body.classList.replace("light-mode", "dark-mode");
+      button.classList.replace("btn-dark", "btn-light");
+      button.textContent = "Light Mode";
+    }
+ 
+    let dark = false;
+    button.addEventListener("click", () => {
+      
+     const isDark = body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode", !isDark); 
+      if (isDark) {
+       
+      
+        button.classList.replace("btn-dark", "btn-light");
+        button.textContent = "Light Mode";
+        localStorage.setItem("theme", "dark");
+      } else {
+       
+        
+        button.classList.replace("btn-light", "btn-dark");
+        button.textContent = "Dark Mode";
+        localStorage.setItem("theme", "light");
+      } 
+
+toggleMode(isDark);
+    });
 });
+function toggleMode(isDark) {
+
+  for (let sheet of document.styleSheets) {
+    try {
+      for (let rule of sheet.cssRules) {
+        if (rule.selectorText === '.mode') {
+          
+          if (isDark) {
+              rule.style.setProperty('background-color', 'black', 'important');
+            rule.style.setProperty('color', 'white', 'important');
+          } else {
+            rule.style.setProperty('background-color', 'white', 'important');
+            rule.style.setProperty('color', 'black', 'important');
+          }
+        }
+      }
+    } catch (e) {
+      
+    }
+  }
+}

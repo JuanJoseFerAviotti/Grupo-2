@@ -12,7 +12,7 @@
   <link href="css/productInfo.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="light-mode">
   <nav class="principalNavBar navbar navbar-light fixed-top">
     <div class="container-fluid">
      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -34,6 +34,7 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
+           <button type="button" id="modeButton" class="btn btn-dark">Modo oscuro</button>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Usuario: <p id="usuarioo"></p>
@@ -62,7 +63,7 @@
           
           <div id="Priority">
             
-            <div id="detalle"></div>
+            <div id="detalle" class="mode"></div>
               <div class = "compra">
                 <div class = "subcompra">
                     <p>Añadir a carrito</p>
@@ -74,7 +75,7 @@
           <div id="productos-relacionados"></div>
           <hr>
           <h2 class="Agregar-comentario">Agregar comentario</h2>
-          <form class="formulario-calificacion" id="formCalificacion">
+          <form class="formulario-calificacion mode" id="formCalificacion">
         <div class="form-group">
             <label>Calificación</label>
             <div class="rating-container" id="ratingStars">
@@ -88,7 +89,7 @@
 
         <div class="form-group">
             <label for="comentario">Comentario</label>
-            <textarea 
+            <textarea class="mode"
                 id="comentario" 
                 placeholder="Escribe tu comentario aquí..."
             ></textarea>
