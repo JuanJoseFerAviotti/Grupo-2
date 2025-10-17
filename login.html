@@ -4,9 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pantalla de Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/login.css">
 </head>
-<body>
+<body class="light-mode">
   <div class="upper-band">
     <div class="logo" id="logo1">!</div>
   </div>
@@ -28,10 +30,12 @@
         <label for="password">Contraseña</label>
         <input type="password" id="password" name="password" required>
 
-        <button type="submit">Ingresar</button>
+        <button id="submit" type="submit">Ingresar</button>
       </form>
+      <button type="button" id="modeButton" class="btn btn-dark">Modo oscuro</button>
     </main>
   </div>
+  
 
   <script src="js/login.js"></script>
 </body>
