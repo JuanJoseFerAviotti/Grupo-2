@@ -135,6 +135,20 @@ footer p {
   border-color: #fff transparent transparent transparent;
 }
 
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+
+  .mode {
+    
+      transition: background 0.3s, color 0.3s;
+    }
+
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
