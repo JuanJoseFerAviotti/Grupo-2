@@ -3,11 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const perfilUsuario = {usuario, nombre, apellido, numero, email };
-      const usuario = document.getElementById("usuario").value;
+      const perfilUsuario = {usuario, nombre:'', apellido:'', numero:'', email:'' };
+      perfilUsuario.usuario = document.getElementById("usuario").value;
       localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("usuario", perfilUsuario);
-      console.log("Guardado en localStorage:", usuario);
+      localStorage.setItem("usuario", JSON.stringify(perfilUsuario));
+      console.log("Guardado en localStorage:", perfilUsuario.usuario);
 
       window.location.href = "index.html";
     });
