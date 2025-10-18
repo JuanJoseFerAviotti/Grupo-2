@@ -11,4 +11,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
       window.location.href = "index.html";
     });
-  });
+
+
+const body = document.body;
+    const button = document.getElementById("modeButton");
+  
+
+   
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      body.classList.replace("light-mode", "dark-mode");
+      button.classList.replace("btn-dark", "btn-light");
+      button.textContent = "Light Mode";
+    }
+ 
+    let dark = false;
+    button.addEventListener("click", () => {
+      
+     const isDark = body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode", !isDark); 
+      if (isDark) {
+       
+      
+        button.classList.replace("btn-dark", "btn-light");
+        button.textContent = "Light Mode";
+        localStorage.setItem("theme", "dark");
+      } else {
+       
+        
+        button.classList.replace("btn-light", "btn-dark");
+        button.textContent = "Dark Mode";
+        localStorage.setItem("theme", "light");
+      } 
+
+toggleMode(isDark);
+    });
+});

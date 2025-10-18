@@ -2,6 +2,11 @@
 /* Banda izquierda */#logo1{display: none;}
 .left-band{
   background: var(--yellow);
+width: 30%;
+height: 100%;
+position: absolute;
+left: 0;
+  
 }
 .upper-band{
   display: none;
@@ -14,11 +19,12 @@
   align-items: center;
   background: var(--bg);
   padding: 40px;
+ 
+  
 }
 .container{
-  display: grid;
-  grid-template-columns: 35% 65%;
-  height: 100%;
+width: 60%;
+height: 100%;
 }
 #logo2{
     width: 150px;
@@ -61,7 +67,26 @@
   align-items: center;
 }
 
+}.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
 }
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+
+  .mode {
+    
+      transition: background 0.3s, color 0.3s;
+    }
+    #modeButton{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+
 .logo {
       width: 150px;
       height: 150px;
@@ -79,8 +104,7 @@
     }
 :root{
   --yellow: #ffc800;  /* amarillo principal */
-  --bg: #ffffff;
-  --text: #222;
+
 }
 
 *{
@@ -125,7 +149,7 @@ input{
   font-size: 14px;
 }
 
-button{
+#submit{
   padding: 12px;
   background: var(--yellow);
   border: none;

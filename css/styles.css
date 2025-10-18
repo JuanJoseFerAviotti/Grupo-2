@@ -4,7 +4,19 @@
 .site-header {
   font-family: 'Verdana', serif !important;
 }
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
 
+  .mode {
+    
+      transition: background 0.3s, color 0.3s;
+    }
 .jumbotron .display-4 {
   font-weight: bold;
 }
@@ -261,7 +273,7 @@ a.custom-card:hover {
     border-radius: 15px;
 }
 #filter{
-    background-color: #E0E0E0;
+   
     width: 50%;
     border-color: black;
     border-width: 11px;
@@ -376,7 +388,7 @@ a.custom-card:hover {
 }
 .card{
       border-radius: 1.25rem;
-      height: 500px !important;
+      height: 515px !important;
 }
 
 .shadow-sm:hover{
