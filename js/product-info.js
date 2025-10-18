@@ -1,6 +1,6 @@
 const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
 const detalle = document.getElementById("detalle");
-const titulo = document.getElementById("listado-autos");
+const titulo = document.getElementById("tituloproducto");
 const productoId = producto.id;
 let productoComentarios = [];
 const url = PRODUCT_INFO_COMMENTS_URL + productoId + EXT_TYPE;
@@ -8,6 +8,7 @@ let calificacionSeleccionada = 0;
 const stars = document.querySelectorAll('.star');
 const form = document.getElementById('formCalificacion');
 const ProductoRelLugar = document.getElementById("productos-relacionados");
+
 let productos = [];
 
 const urlProducto = PRODUCT_INFO_URL + productoId + EXT_TYPE;
@@ -18,10 +19,10 @@ function mostrarProductosRelacionados(array) {
          ProductoRelLugar.innerHTML += `
             
             
-            <div class="PR-card" data-id="${element.id}">
+            <div class="PR-card mode" data-id="${element.id}">
                     <img class="PR-Img" src="` + element.image + `" alt="` + element.name + `" class="img-thumbnail">
                         <div class="PR-name">
-                            <h2>`+ element.name +`</h2>    
+                            <h2 class="mode">`+ element.name +`</h2>    
                         </div>
                 </div>
 
@@ -117,7 +118,7 @@ form.addEventListener('submit', function(e) {
         </div>
         
       `;
-      titulo.innerHTML = `<h2>${producto.name}</h2>`;
+      titulo.innerHTML = `${producto.name}`;
     } else {
       detalle.textContent = "No se encontró información del producto.";
     }
