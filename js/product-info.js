@@ -140,9 +140,9 @@ function mostrarComentarios() {
         minute: '2-digit'
         });
         const comentarioHTML = `
-            <div class="comentario mode">
+            <div class="comentario">
                 <h3 class="usuario">${comentario.user}</h4>
-                <label class="descripcion"><p class="mode">${comentario.description}</p></label>
+                <label class="descripcion">${comentario.description}</label>
                 <label class="fecha">${fechaFormateada}</label>
                 <p class="puntuacion" style="text-align: end;">Puntuación: ${convertirEstrellas(comentario.score)}</p>
             </div>
@@ -175,60 +175,37 @@ document.addEventListener("DOMContentLoaded", function(e){
         }
     });
 
-     const body = document.body;
-    const button = document.getElementById("modeButton");
-  
+    
 
-   
-    const savedTheme = localStorage.getItem("theme");
+});
+/* Funcion mostrar perfil extraida de index.js */
+document.addEventListener("DOMContentLoaded", function(){
+    const loggedIn = localStorage.getItem("loggedIn");
+    const User = JSON.parse(localStorage.getItem("Usuario"));
+  const usuarioDiv = document.getElementById("usuarioo");
+  console.log("Elemento li:", usuarioDiv);
 
-    if (savedTheme === "dark") {
-      body.classList.replace("light-mode", "dark-mode");
-      button.classList.replace("btn-dark", "btn-light");
-      button.textContent = "Light Mode";
+  if (!loggedIn) {
+    window.location.href = "login.html";
+  } else {
+    usuarioDiv.textContent = User.usuario;
+  }
+
+
+    if (!loggedIn) {
+
+      window.location.href = "login.html";
     }
- 
-    let dark = false;
-    button.addEventListener("click", () => {
-      
-     const isDark = body.classList.toggle("dark-mode");
-      body.classList.toggle("light-mode", !isDark); 
-      if (isDark) {
-       
-      
-        button.classList.replace("btn-dark", "btn-light");
-        button.textContent = "Light Mode";
-        localStorage.setItem("theme", "dark");
-      } else {
-       
-        
-        button.classList.replace("btn-light", "btn-dark");
-        button.textContent = "Dark Mode";
-        localStorage.setItem("theme", "light");
-      } 
-
-toggleMode(isDark);
+    document.getElementById("autos").addEventListener("click", function() {
+        localStorage.setItem("catID", 101);
+        window.location = "products.html"
+    });
+    document.getElementById("juguetes").addEventListener("click", function() {
+        localStorage.setItem("catID", 102);
+        window.location = "products.html"
+    });
+    document.getElementById("muebles").addEventListener("click", function() {
+        localStorage.setItem("catID", 103);
+        window.location = "products.html"
     });
 });
-function toggleMode(isDark) {
-
-  for (let sheet of document.styleSheets) {
-    try {
-      for (let rule of sheet.cssRules) {
-        if (rule.selectorText === '.mode') {
-          
-          if (isDark) {
-              rule.style.setProperty('background-color', 'black', 'important');
-            rule.style.setProperty('color', 'white', 'important');
-          } else {
-            rule.style.setProperty('background-color', 'white', 'important');
-            rule.style.setProperty('color', 'black', 'important');
-          }
-        }
-      }
-    } catch (e) {
-      
-    }
-  }
-}
-
