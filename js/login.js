@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-
+      const perfilUsuario = {usuario, nombre, apellido, numero, email };
       const usuario = document.getElementById("usuario").value;
       localStorage.setItem("loggedIn", "true");
-      localStorage.setItem("usuario", usuario);
+      localStorage.setItem("usuario", perfilUsuario);
       console.log("Guardado en localStorage:", usuario);
 
       window.location.href = "index.html";
