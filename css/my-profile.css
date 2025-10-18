@@ -25,7 +25,18 @@ body {
   align-items: center;
   padding: 10px;
 }
+
 .login-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  margin-top: 100px;
+  margin-bottom: 40px;
+  
+}
+#contenedorSize{
   display: flex;
   flex-direction: column;
   justify-content: center;
