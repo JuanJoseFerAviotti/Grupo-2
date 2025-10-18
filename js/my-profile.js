@@ -10,8 +10,6 @@ document.addEventListener("DOMContentLoaded" , function(){
   } else {
     usuarioDiv.textContent = User.usuario;
   }
-
-  
   /* Generales */
   const contenedorInfoVisible = document.getElementById('contenedorDeProfileInfo')
   const contenedorEditable = document.getElementById('contenedorDeProfileInfoEditing')
@@ -47,7 +45,6 @@ document.addEventListener("DOMContentLoaded" , function(){
   contenedorEditable.style.display = 'none'
   updateButton.textContent = 'Editar'
   /* function */
-
   updateButton.addEventListener('click',()=>{
     
     if (contenedorEditable.style.display === 'none'){
