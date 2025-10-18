@@ -249,3 +249,14 @@ footer {
     font-size: 0.7rem;
   }
 }
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+.mode {
+  transition: background 0.3s, color 0.3s;
+}
