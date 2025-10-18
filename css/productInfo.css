@@ -26,6 +26,13 @@ nav a {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
+
+  .img-info{
+border-radius: 30px 0px 0px 30px;
+}.jumbotron {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
 
 .jumbotron {
@@ -41,12 +48,7 @@ nav a {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
-  .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
-}
+
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -149,6 +151,11 @@ footer p {
       transition: background 0.3s, color 0.3s;
     }
 
+    #tituloproducto{
+      margin-left: 20px;
+    }
+    .container-fluid{
+      justify-content: left !important;}
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
 }
@@ -225,6 +232,9 @@ a.custom-card:hover {
   .container-fluid{
     justify-content: left !important;
   }
+   .img-info{
+border-radius: 30px 30px 0px 0px;
+}
 
 }
 .principalNavBar{
@@ -256,7 +266,7 @@ a.custom-card:hover {
     font-weight: bold;
 } 
 .PR-Img{
-    border-radius: 30px 0px 0px 30px;
+
     display: block;
     width: auto;
     height: 100%;
@@ -334,6 +344,8 @@ a.custom-card:hover {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    width: auto;
+    height: auto;
 }
 
 .PR-card:hover {
@@ -346,7 +358,7 @@ a.custom-card:hover {
     height: 200px;
     object-fit: cover;
     border: none !important;
-    border-radius: 0 !important;
+    
     padding: 0 !important;
 }
 
@@ -471,7 +483,7 @@ textarea:focus {
     text-align: center;
     width: 200px;
     margin: 0px auto;
-    height: 30px;
+  
     padding: 12.5px;
     background-color: #FFBB00;
     display: block;
@@ -533,7 +545,8 @@ footer p {
     }
 
     .PR-card {
-        width: 100%;
+        width: auto;
+        height: auto;
     }
 
     .PR-Img {
