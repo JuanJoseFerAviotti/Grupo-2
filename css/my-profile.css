@@ -30,12 +30,9 @@
   background-color: white !important;
   color: black !important;
 }
-
-  .mode {
-    
-      transition: background 0.3s, color 0.3s;
-    }
-
+.mode {
+  transition: background 0.3s, color 0.3s;
+}
 .container{
   background-color: #ffc800;
   ;
