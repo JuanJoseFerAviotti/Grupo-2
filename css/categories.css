@@ -2,27 +2,6 @@
   background-color: #ffbb00;
   height: 50px;
 }
-.nav-itme{
-    height: 50px !important;
-}
-#modeButton{
-    height: 40px;
-}
-.navbar-nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 50px;
-}
-.dropdown-toggle{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.dropdown-toggle p{
-    height: 20px;
-    margin: 0;
-}
 
 .dark-mode{
   background-color: #121212 !important;
