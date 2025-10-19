@@ -50,7 +50,7 @@ function showCategoriesList(){
             ((maxCount == undefined) || (maxCount != undefined && parseInt(category.productCount) <= maxCount))){
 
             htmlContentToAppend += `
-            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active">
+            <div onclick="setCatID(${category.id})" class="list-group-item list-group-item-action cursor-active mode">
                 <div class="row">
                     <div class="col-3">
                         <img src="${category.imgSrc}" alt="${category.description}" class="img-thumbnail">
@@ -137,7 +137,66 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
+ //modo oscuro o claro
+     const body = document.body;
+    const button = document.getElementById("modeButton");
+    //const Filtro = document.getElementById("filter2");
+    
+
+   
+    const savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+      body.classList.replace("light-mode", "dark-mode");
+      button.classList.replace("btn-dark", "btn-light");
+      button.textContent = "Light Mode";
+    }
+ 
+    let dark = false;
+    button.addEventListener("click", () => {
+      
+     const isDark = body.classList.toggle("dark-mode");
+      body.classList.toggle("light-mode", !isDark); 
+      if (isDark) {
+       
+       // Filtro.classList.replace("filtroLight", "filtroDark");
+        button.classList.replace("btn-dark", "btn-light");
+        button.textContent = "Light Mode";
+        localStorage.setItem("theme", "dark");
+      } else {
+       
+        //Filtro.classList.replace("filtroDark", "filtroLight");
+        button.classList.replace("btn-light", "btn-dark");
+        button.textContent = "Dark Mode";
+        localStorage.setItem("theme", "light");
+      } 
+
+toggleMode(isDark);
+    });
 });
+
+
+function toggleMode(isDark) {
+
+  for (let sheet of document.styleSheets) {
+    try {
+      for (let rule of sheet.cssRules) {
+        if (rule.selectorText === '.mode') {
+          
+          if (isDark) {
+              rule.style.setProperty('background-color', 'black', 'important');
+            rule.style.setProperty('color', 'white', 'important');
+          } else {
+            rule.style.setProperty('background-color', 'white', 'important');
+            rule.style.setProperty('color', 'black', 'important');
+          }
+        }
+      }
+    } catch (e) {
+      
+    }
+  }
+}
 
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded", function(){
