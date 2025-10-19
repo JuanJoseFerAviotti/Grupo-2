@@ -1,7 +1,7 @@
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded", function(){
     const loggedIn = localStorage.getItem("loggedIn");
-    const User = JSON.parse(localStorage.getItem("Usuario"));
+    const User = JSON.parse(localStorage.getItem("usuario"));
   const usuarioDiv = document.getElementById("usuarioo");
   console.log("Elemento li:", usuarioDiv);
 
