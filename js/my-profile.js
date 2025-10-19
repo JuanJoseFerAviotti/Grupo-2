@@ -1,7 +1,7 @@
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded" , function(){
   const loggedIn = localStorage.getItem("loggedIn");
-  const User = JSON.parse(localStorage.getItem("Usuario"));
+  const User = JSON.parse(localStorage.getItem("usuario"));
   const usuarioDiv = document.getElementById("usuarioo");
   console.log("Elemento li:", usuarioDiv);
 
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded" , function(){
   const InputPhone = document.getElementById('phoneInput')
   const InputEMail = document.getElementById('eMailInput')
   const InputUser = document.getElementById('my-usuarioEdit')
-  const datosGuardados = JSON.parse(localStorage.getItem("Usuario"));
+  const datosGuardados = JSON.parse(localStorage.getItem("usuario"));
   if (datosGuardados) {
     TextUser.textContent = datosGuardados.usuario;
     TextName.textContent = datosGuardados.nombre;
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded" , function(){
     const usuario = datosGuardados.usuario
 
     const perfilUsuario = {usuario, nombre, apellido, numero, email };
-      localStorage.setItem("Usuario", JSON.stringify(perfilUsuario));
+      localStorage.setItem("usuario", JSON.stringify(perfilUsuario));
         contenedorInfoVisible.style.display = 'flex'
   contenedorEditable.style.display = 'none'
   updateButton.textContent = 'Editar'
