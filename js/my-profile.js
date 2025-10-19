@@ -1,7 +1,7 @@
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded" , function(){
   const loggedIn = localStorage.getItem("loggedIn");
-  const User = JSON.parse(localStorage.getItem("usuario"));
+  const User = JSON.parse(localStorage.getItem("Usuario"));
   const usuarioDiv = document.getElementById("usuarioo");
   console.log("Elemento li:", usuarioDiv);
 
@@ -10,23 +10,25 @@ document.addEventListener("DOMContentLoaded" , function(){
   } else {
     usuarioDiv.textContent = User.usuario;
   }
+
+  
   /* Generales */
   const contenedorInfoVisible = document.getElementById('contenedorDeProfileInfo')
   const contenedorEditable = document.getElementById('contenedorDeProfileInfoEditing')
   const updateButton = document.getElementById('btUpdateP')
-  /* contenedor visible */
+  /* Contenedor Visible */
   const TextName = document.getElementById('my-nombre')
   const TextLastName = document.getElementById('my-apellido')
   const TextNumber = document.getElementById('my-telefono')
   const TextEMail = document.getElementById('my-EMail')
   const TextUser = document.getElementById('my-usuario')
-  /* contenedor editable */
+  /* Contenedor Editable */
   const InputName = document.getElementById('nameInput')
   const InputLastName = document.getElementById('lastnameInput')
   const InputPhone = document.getElementById('phoneInput')
   const InputEMail = document.getElementById('eMailInput')
   const InputUser = document.getElementById('my-usuarioEdit')
-  const datosGuardados = JSON.parse(localStorage.getItem("usuario"));
+  const datosGuardados = JSON.parse(localStorage.getItem("Usuario"));
   if (datosGuardados) {
     TextUser.textContent = datosGuardados.usuario;
     TextName.textContent = datosGuardados.nombre;
@@ -40,11 +42,12 @@ document.addEventListener("DOMContentLoaded" , function(){
     InputPhone.value = datosGuardados.numero;
     InputEMail.value = datosGuardados.email;
   }
-  /* estado inicial */
+  /* Estado inicial */
   contenedorInfoVisible.style.display = 'flex'
   contenedorEditable.style.display = 'none'
   updateButton.textContent = 'Editar'
   /* function */
+
   updateButton.addEventListener('click',()=>{
     
     if (contenedorEditable.style.display === 'none'){
@@ -57,13 +60,12 @@ document.addEventListener("DOMContentLoaded" , function(){
       const apellido = InputLastName.value.trim() || 'Apellido'
       const numero = InputPhone.value.trim() || 'Telefono'
       const email = InputEMail.value.trim() || 'EMail'
-      const usuario = datosGuardados.usuario
     
     TextName.textContent = nombre
     TextLastName.textContent = apellido
     TextNumber.textContent = numero
     TextEMail.textContent = email
-    TextUser.textContent = usuario
+    const usuario = datosGuardados.usuario
 
     const perfilUsuario = {usuario, nombre, apellido, numero, email };
       localStorage.setItem("Usuario", JSON.stringify(perfilUsuario));
@@ -77,16 +79,13 @@ document.addEventListener("DOMContentLoaded" , function(){
     phoneInput.addEventListener('input', (e) => {
       e.target.value = e.target.value.replace(/[^0-9]/g, '');
     });
-
       // Save on Enter key
     phoneInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') saveTEButton.click();
     });
+});
 
-    // Block non-numeric input
-    phoneInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.replace(/[^0-9]/g, '');
-    });
+    
 
     // Modo oscuro/claro
 const body = document.body;
@@ -123,7 +122,6 @@ const body = document.body;
 
 toggleMode(isDark);
     });
-});
 function toggleMode(isDark) {
 
   for (let sheet of document.styleSheets) {
