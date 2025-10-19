@@ -46,20 +46,11 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <button type="button" id="modeButton" class="btn btn-dark">Modo oscuro</button>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Usuario: <p id="usuarioo"></p>
-            </a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-              <li><a class="dropdown-item" href="my-profile.html">Mi Perfil</a></li>
-              <li><a class="dropdown-item" href="#">Mis Compras</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-            </ul>
-          </li>
+          
+         <li><a class="nav-link" href="#">Mis Compras</a></li>
+           <li><a class="nav-link" href="login.html">Cerrar Sesion</a></li>
+           <button type="button" id="modeButton" class="btn btn-dark">Modo oscuro</button>
+          
         </ul>
       </div>
     </div>
@@ -101,9 +92,11 @@
     </div>
     <div id="contenedorDeProfileInfoEditing" class="mode">
       <div class="line">
-        <div>
-         <img src="img/Sample_User_Icon.png" class="rounded-circle border border-5"  id="userImage" alt="user">
+        <div id="line">
+         <img src="img/Sample_User_Icon.png" class="rounded-circle border border-5"  id="userImageedit" alt="user">
+          <input type="file" id="upload" accept="image/*">
         </div>
+        
         <div>
           <h2 id="textUser">Usuario</h2>
           <p id="my-usuarioEdit"></p>
