@@ -1,7 +1,7 @@
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded" , function(){
   const loggedIn = localStorage.getItem("loggedIn");
-  const User = JSON.parse(localStorage.getItem("Usuario"));
+  const User = JSON.parse(localStorage.getItem("usuario"));
   const usuarioDiv = document.getElementById("usuarioo");
   console.log("Elemento li:", usuarioDiv);
 
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded" , function(){
   const InputPhone = document.getElementById('phoneInput')
   const InputEMail = document.getElementById('eMailInput')
   const InputUser = document.getElementById('my-usuarioEdit')
-  const datosGuardados = JSON.parse(localStorage.getItem("Usuario"));
+  const datosGuardados = JSON.parse(localStorage.getItem("usuario"));
   if (datosGuardados) {
     TextUser.textContent = datosGuardados.usuario;
     TextName.textContent = datosGuardados.nombre;
@@ -57,12 +57,13 @@ document.addEventListener("DOMContentLoaded" , function(){
       const apellido = InputLastName.value.trim() || 'Apellido'
       const numero = InputPhone.value.trim() || 'Telefono'
       const email = InputEMail.value.trim() || 'EMail'
+      const usuario = datosGuardados.usuario
     
     TextName.textContent = nombre
     TextLastName.textContent = apellido
     TextNumber.textContent = numero
     TextEMail.textContent = email
-    const usuario = datosGuardados.usuario
+    TextUser.textContent = usuario
 
     const perfilUsuario = {usuario, nombre, apellido, numero, email };
       localStorage.setItem("Usuario", JSON.stringify(perfilUsuario));
