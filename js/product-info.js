@@ -140,9 +140,9 @@ function mostrarComentarios() {
         minute: '2-digit'
         });
         const comentarioHTML = `
-            <div class="comentario">
+            <div class="comentario mode">
                 <h3 class="usuario">${comentario.user}</h4>
-                <label class="descripcion">${comentario.description}</label>
+                <label class="descripcion mode">${comentario.description}</label>
                 <label class="fecha">${fechaFormateada}</label>
                 <p class="puntuacion" style="text-align: end;">Puntuación: ${convertirEstrellas(comentario.score)}</p>
             </div>
