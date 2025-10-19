@@ -29,7 +29,12 @@ document.addEventListener("DOMContentLoaded", function(){
         window.location = "products.html"
     });
 
+<<<<<<< HEAD
     //modo oscuro o claro
+=======
+    
+  //modo oscuro o claro
+>>>>>>> origin/main
      const body = document.body;
     const button = document.getElementById("modeButton");
     //const Filtro = document.getElementById("filter2");
@@ -42,6 +47,10 @@ document.addEventListener("DOMContentLoaded", function(){
       body.classList.replace("light-mode", "dark-mode");
       button.classList.replace("btn-dark", "btn-light");
       button.textContent = "Light Mode";
+<<<<<<< HEAD
+=======
+       toggleMode(true);
+>>>>>>> origin/main
     }
  
     let dark = false;
@@ -66,7 +75,10 @@ document.addEventListener("DOMContentLoaded", function(){
 toggleMode(isDark);
     });
 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 function toggleMode(isDark) {
 
   for (let sheet of document.styleSheets) {
@@ -88,3 +100,7 @@ function toggleMode(isDark) {
     }
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main

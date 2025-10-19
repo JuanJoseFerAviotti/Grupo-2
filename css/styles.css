@@ -20,7 +20,9 @@
 .jumbotron .display-4 {
   font-weight: bold;
 }
-
+.album {
+  background-color:none !important;
+}
 nav a {
   text-decoration: none;
 }

@@ -1,0 +1,33 @@
+
+.principalNavBar{
+  height: 62px ;
+  background-color: #fb0 !important;
+}
+
+
+.offcanvas-start{
+  background-color: #202020;
+}
+.offcanvas-header{
+  background-color: #303030;
+}
+.offcanvas-title{
+  color: #fb0;
+}
+.nav-link{
+  color: #fff !important;
+}
+main{
+    margin-top: 62px;
+}
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+.mode {
+  transition: background 0.3s, color 0.3s;
+}

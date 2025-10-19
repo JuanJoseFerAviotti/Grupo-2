@@ -32,6 +32,7 @@ body {
   justify-content: center;
   align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
   margin-top: 100px;
   margin-bottom: 40px;
   
@@ -58,6 +59,8 @@ body {
   align-items: center;
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> origin/main
   margin-top: 100px;
   margin-bottom: 40px;
   
@@ -73,7 +76,7 @@ body {
 .form-control{
   display: none;
 }
-img#userImage{
+img#userImage , img#userImageedit{
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -124,6 +127,11 @@ img#userImage{
   margin: 0;
   margin-top: 5%;
 }
+#upload{
+ width: 150px; 
+ margin-left :15px;
+ 
+}
 #contenedorDeProfileInfoEditing{
   border-radius: 15px;
   box-shadow: 0 .25rem .55rem rgba(0, 0, 0, .5);
@@ -150,8 +158,8 @@ img#userImage{
   
   padding-left: 10px;
   border-radius: 20px;
-  height: 30%;
-  margin: 0;
+ 
+  
   margin-top: 4.5%;
 }
 
@@ -161,6 +169,13 @@ img#userImage{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+}
+#line{
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;  
 }
 .lineBlock{
   height: 30%;
