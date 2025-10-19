@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded" , function(){
   if (!loggedIn) {
     window.location.href = "login.html";
   } else {
-    usuarioDiv.textContent = User.usuario;
+   // usuarioDiv.textContent = User.usuario;
   }
 
   
@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded" , function(){
     InputLastName.value = datosGuardados.apellido;
     InputPhone.value = datosGuardados.numero;
     InputEMail.value = datosGuardados.email;
+    //imageData.value = datosGuardados.imageData;
   }
   /* Estado inicial */
   contenedorInfoVisible.style.display = 'flex'
@@ -143,3 +144,29 @@ function toggleMode(isDark) {
     }
   }
 }
+//cambiar imagen
+  const upload = document.getElementById('upload');
+    const profilePic = document.getElementById('userImage');
+    const profilePicEdit = document.getElementById('userImageedit');
+   
+    // Load saved picture if it exists
+    const savedImage = localStorage.getItem('profileImage');
+    if (savedImage){
+      profilePic.src = savedImage;
+      profilePicEdit.src = savedImage;
+    } 
+    else profilePic.src = 'img/Sample_User_Icon.png';
+
+    // When user uploads a new file
+    upload.addEventListener('change', () => {
+      const file = upload.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = () => {
+       const imageData = reader.result;
+        profilePic.src = imageData;
+        localStorage.setItem('profileImage', imageData); // Save locally
+      };
+      reader.readAsDataURL(file); // Convert file → base64
+    });
