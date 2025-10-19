@@ -1,8 +1,25 @@
-.navbar{
-  background-color: #ffbb00;
-  height: 50px;
+
+.principalNavBar{
+  height: 62px ;
+  background-color: #fb0 !important;
 }
 
+
+.offcanvas-start{
+  background-color: #202020;
+}
+.offcanvas-header{
+  background-color: #303030;
+}
+.offcanvas-title{
+  color: #fb0;
+}
+.nav-link{
+  color: #fff !important;
+}
+main{
+    margin-top: 62px;
+}
 .dark-mode{
   background-color: #121212 !important;
   color: white !important;
