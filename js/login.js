@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      const perfilUsuario = {usuario, nombre:'', apellido:'', numero:'', email:'' };
+      const perfilUsuario = {usuario, nombre:'', apellido:'', numero:'', email:'' ,ProfileImage:''};
       perfilUsuario.usuario = document.getElementById("usuario").value;
       localStorage.setItem("loggedIn", "true");
       localStorage.setItem("usuario", JSON.stringify(perfilUsuario));
