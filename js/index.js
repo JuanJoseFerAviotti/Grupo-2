@@ -66,3 +66,25 @@ document.addEventListener("DOMContentLoaded", function(){
 toggleMode(isDark);
     });
 });
+
+function toggleMode(isDark) {
+
+  for (let sheet of document.styleSheets) {
+    try {
+      for (let rule of sheet.cssRules) {
+        if (rule.selectorText === '.mode') {
+          
+          if (isDark) {
+              rule.style.setProperty('background-color', 'black', 'important');
+            rule.style.setProperty('color', 'white', 'important');
+          } else {
+            rule.style.setProperty('background-color', 'white', 'important');
+            rule.style.setProperty('color', 'black', 'important');
+          }
+        }
+      }
+    } catch (e) {
+      
+    }
+  }
+}
