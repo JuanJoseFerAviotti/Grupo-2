@@ -211,6 +211,8 @@ document.addEventListener("DOMContentLoaded", function(){
       body.classList.replace("light-mode", "dark-mode");
       button.classList.replace("btn-dark", "btn-light");
       button.textContent = "Light Mode";
+      toggleMode(true);
+      
     }
  
     let dark = false;
