@@ -8,37 +8,59 @@ function showCarsList(array){
     for(let i = 0; i < array.length; i++){ 
         let product = array[i];
         htmlContentToAppend += `
-        <div class="col-sm-12 col-md-6 col-lg-4 producto-item" data-id="` + product.id + `">
-        <div class="card h-100 shadow-sm mode">
-          <img src="` + product.image + `" class="card-img-top" alt="` + product.name + `">
-          <div class="card-body">
-            <h3 class="card-title">`+ product.name +`</h5>
-            <p class="card-text">`+ product.description +`</p>
-            <h3 class="fw-bold">`+ product.currency + product.cost +`</h3>
+        <div class="col-sm-12 col-md-6 col-lg-4 producto-item" data-id="${product.id}">
+          <div class="card h-100 shadow-sm mode">
+            <img src="${product.image || (product.images && product.images[0]) || ''}" class="card-img-top" alt="${product.name}">
+            <div class="card-body">
+              <h3 class="card-title">${product.name}</h3>
+              <p class="card-text">${product.description}</p>
+              <h3 class="fw-bold">${product.currency}${product.cost}</h3>
             </div>
-                <div class = "compra ">
-                    <div class = "subcompra">
-                        <p>Añadir a carrito</p>
-                    </div>
-                </div>
+            <div class="compra">
+              <div class="subcompra">
+                <p>Añadir a carrito</p>
+              </div>
             </div>
-            </div>
+          </div>
         </div>
-      
-        `
-        document.getElementById("contenedorDeProductos").innerHTML = htmlContentToAppend; 
+        `;
     }
-       document.querySelectorAll(".producto-item").forEach(item => {
+
+    document.getElementById("contenedorDeProductos").innerHTML = htmlContentToAppend; 
+
+    document.querySelectorAll(".producto-item").forEach(item => {
         item.addEventListener("click", () => {
             const id = item.getAttribute("data-id");
             const productoSeleccionado = array.find(p => p.id == id);
-
-            
             localStorage.setItem("productoSeleccionado", JSON.stringify(productoSeleccionado));
-
-            
             window.location.href = "product-info.html";
         });
+
+        
+        const compraBtn = item.querySelector(".compra");
+        if (compraBtn) {
+            compraBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); 
+                const id = item.getAttribute("data-id");
+                const prod = array.find(p => p.id == id);
+                if (!prod) return;
+
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const cartItem = {
+                    id: prod.id,
+                    name: prod.name,
+                    description: prod.description,
+                    currency: prod.currency,
+                    cost: prod.cost,
+                    image: prod.image || (prod.images && prod.images[0]) || ''
+                };
+
+                cart.push(cartItem);
+                localStorage.setItem("cart", JSON.stringify(cart));
+                alert('Producto añadido al carrito');
+                updateCartCount();
+            });
+        }
     });
 }
 
@@ -206,4 +228,30 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+});
+
+// Actualiza visualmente el contador del carrito leyendo localStorage
+function updateCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const countEl = document.getElementById("cart-count");
+    if (countEl) {
+      countEl.textContent = cart.length;
+      // si no hay items, ocultar badge para evitar 0 brillante (opcional)
+      countEl.style.display = cart.length > 0 ? 'inline-block' : 'none';
+    }
+  } catch (e) {
+    // en caso de error de parseo, eliminar clave incorrecta y resetear badge
+    localStorage.removeItem("cart");
+    const countEl = document.getElementById("cart-count");
+    if (countEl) {
+      countEl.textContent = 0;
+      countEl.style.display = 'none';
+    }
+  }
+}
+
+// Inicializar contador al cargar la página
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
 });

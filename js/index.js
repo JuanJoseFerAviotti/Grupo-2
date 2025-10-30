@@ -89,4 +89,3 @@ function toggleMode(isDark) {
     }
   }
 }
-
