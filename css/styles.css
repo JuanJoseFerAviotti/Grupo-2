@@ -402,3 +402,18 @@ a.custom-card:hover {
     border-top-left-radius: calc(1.25rem - 1px);
     border-top-right-radius: calc(1.25rem - 1px);
 }
+
+#carrito {
+    height: 40px;
+    width: 40px;
+    background-image: url(../img/carrito-gris-oscuro.svg);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.compra:hover{
+  background-color: #e6a700;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}

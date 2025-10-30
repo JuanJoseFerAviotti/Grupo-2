@@ -57,7 +57,12 @@
     <form class="d-flex flex-grow-1 ps-1" role="search">
       <input type="search" id="buscarInput" placeholder="🔍   Buscar productos..." class="form-control">
     </form>
+    <button id="carrito" class="btn btn-link position-relative p-0" type="button" onclick="window.location.href='cart.html'" aria-label="Ir al carrito">
+      
+      <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+    </button>
   </div>
+  
 </nav>
   <main class="pb-5">
  <div  class="mode filtro ">
