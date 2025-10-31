@@ -36,7 +36,7 @@ function showCarsList(array){
             window.location.href = "product-info.html";
         });
 
-        
+        //agregar al carrito
         const compraBtn = item.querySelector(".compra");
         if (compraBtn) {
             compraBtn.addEventListener("click", (e) => {
@@ -46,22 +46,38 @@ function showCarsList(array){
                 if (!prod) return;
 
                 const cart = JSON.parse(localStorage.getItem("cart")) || [];
-                const cartItem = {
+                const productoParaCarrito = {
                     id: prod.id,
                     name: prod.name,
                     description: prod.description,
                     currency: prod.currency,
                     cost: prod.cost,
-                    image: prod.image || (prod.images && prod.images[0]) || ''
+                    image: prod.image || (prod.images && prod.images[0]) || '',
+                    count: 1
                 };
+                const productoExistente = cart.find(item => item.id === prod.id);
+                if (productoExistente) {
+                    productoExistente.count++;
+                } else {
 
-                cart.push(cartItem);
+                cart.push(productoParaCarrito);
+                
+                }
                 localStorage.setItem("cart", JSON.stringify(cart));
-                alert('Producto añadido al carrito');
-                updateCartCount();
-            });
-        }
-    });
+                const cartCount = document.getElementById("cart-count");
+                if (cartCount) {
+                    const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+                    cartCount.textContent = totalItems;
+                }
+
+                Swal.fire({
+                title: "Producto agregado al carrito!",
+                icon: "success",
+                draggable: true
+                });
+                        });
+                    }
+                });
 }
 
 
@@ -140,10 +156,6 @@ document.addEventListener("DOMContentLoaded", function(e){
     //modo oscuro o claro
      const body = document.body;
     const button = document.getElementById("modeButton");
-    //const Filtro = document.getElementById("filter2");
-    
-
-   
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
@@ -159,14 +171,10 @@ document.addEventListener("DOMContentLoaded", function(e){
      const isDark = body.classList.toggle("dark-mode");
       body.classList.toggle("light-mode", !isDark); 
       if (isDark) {
-       
-       // Filtro.classList.replace("filtroLight", "filtroDark");
         button.classList.replace("btn-dark", "btn-light");
         button.textContent = "Light Mode";
         localStorage.setItem("theme", "dark");
       } else {
-       
-        //Filtro.classList.replace("filtroDark", "filtroLight");
         button.classList.replace("btn-light", "btn-dark");
         button.textContent = "Dark Mode";
         localStorage.setItem("theme", "light");
@@ -234,24 +242,22 @@ document.addEventListener("DOMContentLoaded", function(){
 function updateCartCount() {
   try {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-      countEl.textContent = cart.length;
-      // si no hay items, ocultar badge para evitar 0 brillante (opcional)
-      countEl.style.display = cart.length > 0 ? 'inline-block' : 'none';
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        cartCount.textContent = totalItems;
     }
   } catch (e) {
-    // en caso de error de parseo, eliminar clave incorrecta y resetear badge
     localStorage.removeItem("cart");
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-      countEl.textContent = 0;
-      countEl.style.display = 'none';
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+      cartCount.textContent = 0;
+      cartCount.style.display = 'none';
     }
   }
 }
 
-// Inicializar contador al cargar la página
+
 document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 });

@@ -1,71 +1,69 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cartContainer = document.getElementById("cart-container");
-
-  // Load cart from localStorage
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  // Check if cart is empty
   if (cart.length === 0) {
-    cartContainer.innerHTML = "<p>Your cart is empty 🛍️</p>";
+    cartContainer.innerHTML = "<p>Tu carrito está vacío.🛍️</p>";
     return;
   }
-
-  // Group products by ID
-  const grouped = {};
-  cart.forEach(item => {
-    if (!grouped[item.id]) {
-      grouped[item.id] = { ...item, quantity: 1 };
-    } else {
-      grouped[item.id].quantity++;
-    }
-  });
-
-  // Convert to array for easier iteration
-  const groupedItems = Object.values(grouped);
-
-  // Clear old content
   cartContainer.innerHTML = "";
 
-  // Display each grouped item
-  groupedItems.forEach(item => {
-    const totalCost = item.cost * item.quantity;
+  
+  cart.forEach((item, index) => {
+    const totalCost = item.cost * item.count;
 
     const cartItem = document.createElement("div");
     cartItem.classList.add("cart-item");
 
     cartItem.innerHTML = `
     <div class="card-total mode">
-    <div class="card-producto"> 
-      <img  class="card-img" src="${item.image}" alt="${item.name}">
-      <div class="cart-details">
-        <div class="cart-name">${item.name}</div>
-        <div>${item.description}</div>
-       
-        <div>Unit Price: ${item.currency} ${item.cost}</div>
-
-      </div> <div class="card-right" style="left:0; width: 150px; flex-direction: column; align-items: flex-end;">
-     <h4>${item.quantity}</h4>
-      <div class="cart-price">Total: ${item.currency} ${totalCost}</div>
-      </div></div>
+      <div class="card-producto container-fluid"> 
+        <div class="row align-items-center">
+          <div class="col-12 col-sm-3 text-center mb-2 mb-sm-0">
+            <img class="card-img img-fluid" src="${item.image}" alt="${item.name}">
+          </div>
+          
+          <div class="col-12 col-sm-6 mb-2 mb-sm-0">
+            <div class="cart-details">
+              <div class="cart-name"><h2 class="h5">${item.name}</h2></div>
+              <div><h5 class="h6">Precio unitario: ${item.currency} ${item.cost}</h5></div>
+            </div>
+          </div>
+          
+          <div class="col-12 col-sm-3 text-end">
+            <div class="card-right">
+              <input type="number" 
+                     value="${item.count}" 
+                     min="1" 
+                     class="cantidad-input form-control mb-2" 
+                     data-index="${index}"
+                     data-cost="${item.cost}"
+                     data-currency="${item.currency}">
+              <div class="cart-price">Total: ${item.currency} ${totalCost}</div>
+            </div>
+          </div>
+        </div>
       </div>
-    `;
+    </div>
+`;
 
     cartContainer.appendChild(cartItem);
+
+    
+    const input = cartItem.querySelector('.cantidad-input');
+    input.addEventListener('change', updateItemQuantity);
   });
 
-  // Optional: show total of all products
-  const cartTotal = groupedItems.reduce((sum, item) => sum + (item.cost * item.quantity), 0);
-const envioC = groupedItems.reduce((sum, item) => sum + (100 * item.quantity), 0);
+const cartTotal = cart.reduce((sum, item) => sum + (item.cost * item.count), 0);
+const envioC = cart.reduce((sum, item) => sum + (100 * item.count), 0);
 const totalprice = cartTotal + envioC;
 
-const currency = groupedItems[0].currency || "$";
+const currency = cart[0].currency || "$";
 
-// Get existing elements
 const CostoTotal = document.getElementById("costo");
 const CostoEnvio = document.getElementById("costoEnvio");
 const TotalPrice = document.getElementById("CostoTotal");
 
-// Update their innerHTML directly
 if (CostoTotal) CostoTotal.innerHTML = `${currency} ${cartTotal}`;
 if (CostoEnvio) CostoEnvio.innerHTML = `${currency} ${envioC}`;
 if (TotalPrice) TotalPrice.innerHTML = `${currency} ${totalprice}`;
@@ -77,19 +75,17 @@ updateCartCount();
 function updateCartCount() {
   try {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-      countEl.textContent = cart.length;
-      // si no hay items, ocultar badge para evitar 0 brillante (opcional)
-      countEl.style.display = cart.length > 0 ? 'inline-block' : 'none';
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        cartCount.textContent = totalItems;
     }
   } catch (e) {
-    // en caso de error de parseo, eliminar clave incorrecta y resetear badge
     localStorage.removeItem("cart");
-    const countEl = document.getElementById("cart-count");
-    if (countEl) {
-      countEl.textContent = 0;
-      countEl.style.display = 'none';
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+      cartCount.textContent = 0;
+      cartCount.style.display = 'none';
     }
   }
 }
@@ -150,4 +146,40 @@ function toggleMode(isDark) {
       
     }
   }
+}
+
+// Función para actualizar cantidad y totales
+function updateItemQuantity(e) {
+    const input = e.target;
+    const newCount = parseInt(input.value);
+    const itemIndex = parseInt(input.dataset.index);
+    const cost = parseFloat(input.dataset.cost);
+    const currency = input.dataset.currency;
+
+    if (newCount < 1) {
+        input.value = 1;
+        return;
+    }
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart[itemIndex].count = newCount;
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const cartPrice = input.parentElement.querySelector('.cart-price');
+    const totalCost = cost * newCount;
+    cartPrice.textContent = `Total: ${currency} ${totalCost}`;
+
+    const cartTotal = cart.reduce((sum, item) => sum + (item.cost * item.count), 0);
+    const envioC = cart.reduce((sum, item) => sum + (100 * item.count), 0);
+    const totalprice = cartTotal + envioC;
+
+    const CostoTotal = document.getElementById("costo");
+    const CostoEnvio = document.getElementById("costoEnvio");
+    const TotalPrice = document.getElementById("CostoTotal");
+
+    if (CostoTotal) CostoTotal.innerHTML = `${currency} ${cartTotal}`;
+    if (CostoEnvio) CostoEnvio.innerHTML = `${currency} ${envioC}`;
+    if (TotalPrice) TotalPrice.innerHTML = `${currency} ${totalprice}`;
+
+    updateCartCount();
 }

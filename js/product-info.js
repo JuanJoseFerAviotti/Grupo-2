@@ -1,4 +1,5 @@
 const producto = JSON.parse(localStorage.getItem("productoSeleccionado"));
+const usuario = JSON.parse(localStorage.getItem("usuario"));
 const detalle = document.getElementById("detalle");
 const titulo = document.getElementById("tituloproducto");
 const productoId = producto.id;
@@ -48,13 +49,65 @@ function mostrarProductosRelacionados(array) {
     });
 }
 
+function updateCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        cartCount.textContent = totalItems;
+    }
+  } catch (e) {
+    localStorage.removeItem("cart");
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+      cartCount.textContent = 0;
+      cartCount.style.display = 'none';
+    }
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartCount();
+});
+
 
         
-        
+function agregarCarrito() {
+  
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    
+    const productoParaCarrito = {
+        id: producto.id,
+        name: producto.name,
+        description: producto.description,
+        currency: producto.currency,
+        cost: producto.cost,
+        image: producto.image || producto.images[0],
+        count: 1  
+    };
+    const productoExistente = cart.find(item => item.id === producto.id);
+    
+    if (productoExistente) {
+        productoExistente.count++;
+    } else {
+        cart.push(productoParaCarrito);
+    }
 
-       
-    
-    
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        cartCount.textContent = totalItems;
+    }
+    Swal.fire({
+    title: "Producto agregado al carrito!",
+    icon: "success",
+    draggable: true
+    });
+}
 
 
 stars.forEach(star => {
@@ -80,15 +133,23 @@ form.addEventListener('submit', function(e) {
     
     const comentario = document.getElementById('comentario').value;
     if (calificacionSeleccionada === 0) {
-        alert('Por favor, selecciona una calificación.');
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, selecciona una calificación!"
+        });
         return;
     }
     if (comentario.trim() === '') {
-        alert('Por favor, escribe un comentario.');
+        Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor, escribe un comentario!"
+        });
         return;
     }
     const nuevoComentario = {
-        user: localStorage.getItem("usuario"),
+        user: usuario.usuario,
         description: comentario,
         score: calificacionSeleccionada,
         dateTime: new Date().toISOString()
@@ -96,7 +157,11 @@ form.addEventListener('submit', function(e) {
     productoComentarios.push(nuevoComentario);
     mostrarComentarios();
     
-    alert('Comentario enviado!');
+    Swal.fire({
+    title: "Comentario enviado con éxito!",
+    icon: "success",
+    draggable: true
+    });
     
     
     form.reset();
@@ -119,6 +184,8 @@ form.addEventListener('submit', function(e) {
         
       `;
       titulo.innerHTML = `${producto.name}`;
+
+      
     } else {
       detalle.textContent = "No se encontró información del producto.";
     }
@@ -201,10 +268,6 @@ document.addEventListener("DOMContentLoaded", function(){
 //modo oscuro o claro
      const body = document.body;
     const button = document.getElementById("modeButton");
-    //const Filtro = document.getElementById("filter2");
-    
-
-   
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
@@ -221,14 +284,10 @@ document.addEventListener("DOMContentLoaded", function(){
      const isDark = body.classList.toggle("dark-mode");
       body.classList.toggle("light-mode", !isDark); 
       if (isDark) {
-       
-       // Filtro.classList.replace("filtroLight", "filtroDark");
         button.classList.replace("btn-dark", "btn-light");
         button.textContent = "Light Mode";
         localStorage.setItem("theme", "dark");
       } else {
-       
-        //Filtro.classList.replace("filtroDark", "filtroLight");
         button.classList.replace("btn-light", "btn-dark");
         button.textContent = "Dark Mode";
         localStorage.setItem("theme", "light");
