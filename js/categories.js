@@ -140,7 +140,6 @@ document.addEventListener("DOMContentLoaded", function(e){
  //modo oscuro o claro
      const body = document.body;
     const button = document.getElementById("modeButton");
-    //const Filtro = document.getElementById("filter2");
     
 
    
@@ -159,13 +158,11 @@ document.addEventListener("DOMContentLoaded", function(e){
       body.classList.toggle("light-mode", !isDark); 
       if (isDark) {
        
-       // Filtro.classList.replace("filtroLight", "filtroDark");
         button.classList.replace("btn-dark", "btn-light");
         button.textContent = "Light Mode";
         localStorage.setItem("theme", "dark");
       } else {
        
-        //Filtro.classList.replace("filtroDark", "filtroLight");
         button.classList.replace("btn-light", "btn-dark");
         button.textContent = "Dark Mode";
         localStorage.setItem("theme", "light");
@@ -214,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const body = document.body;
     const button = document.getElementById("modeButton");
-    //const Filtro = document.getElementById("filter2");
     
 
    
@@ -235,13 +231,11 @@ document.addEventListener("DOMContentLoaded", function(){
       body.classList.toggle("light-mode", !isDark); 
       if (isDark) {
        
-       // Filtro.classList.replace("filtroLight", "filtroDark");
         button.classList.replace("btn-dark", "btn-light");
         button.textContent = "Light Mode";
         localStorage.setItem("theme", "dark");
       } else {
        
-        //Filtro.classList.replace("filtroDark", "filtroLight");
         button.classList.replace("btn-light", "btn-dark");
         button.textContent = "Dark Mode";
         localStorage.setItem("theme", "light"); 
@@ -272,3 +266,23 @@ function toggleMode(isDark) {
     }
   }
 }
+function updateCartCount() {
+  try {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+        const totalItems = cart.reduce((sum, item) => sum + item.count, 0);
+        cartCount.textContent = totalItems;
+    }
+  } catch (e) {
+    localStorage.removeItem("cart");
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+      cartCount.textContent = 0;
+      cartCount.style.display = 'none';
+    }
+  }
+}
+document.addEventListener("DOMContentLoaded", function() {
+  updateCartCount();
+});

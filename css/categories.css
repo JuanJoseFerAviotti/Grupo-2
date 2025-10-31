@@ -31,3 +31,11 @@ main{
 .mode {
   transition: background 0.3s, color 0.3s;
 }
+#carrito {
+    height: 40px;
+    width: 40px;
+    background-image: url(../img/carrito-gris-oscuro.svg);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
