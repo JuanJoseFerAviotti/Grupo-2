@@ -138,17 +138,15 @@ document.addEventListener("DOMContentLoaded", function(e){
         showCategoriesList();
     });
  //modo oscuro o claro
-     const body = document.body;
+    const body = document.body;
     const button = document.getElementById("modeButton");
-    
-
-   
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
       body.classList.replace("light-mode", "dark-mode");
       button.classList.replace("btn-dark", "btn-light");
       button.textContent = "Light Mode";
+       toggleMode(true);
     }
  
     let dark = false;
@@ -157,12 +155,10 @@ document.addEventListener("DOMContentLoaded", function(e){
      const isDark = body.classList.toggle("dark-mode");
       body.classList.toggle("light-mode", !isDark); 
       if (isDark) {
-       
         button.classList.replace("btn-dark", "btn-light");
         button.textContent = "Light Mode";
         localStorage.setItem("theme", "dark");
       } else {
-       
         button.classList.replace("btn-light", "btn-dark");
         button.textContent = "Dark Mode";
         localStorage.setItem("theme", "light");
@@ -171,8 +167,6 @@ document.addEventListener("DOMContentLoaded", function(e){
 toggleMode(isDark);
     });
 });
-
-
 function toggleMode(isDark) {
 
   for (let sheet of document.styleSheets) {
@@ -194,7 +188,6 @@ function toggleMode(isDark) {
     }
   }
 }
-
 /* Funcion mostrar perfil extraida de index.js */
 document.addEventListener("DOMContentLoaded", function(){
     const loggedIn = localStorage.getItem("loggedIn");

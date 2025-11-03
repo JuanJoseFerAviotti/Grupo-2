@@ -236,6 +236,10 @@ a.custom-card:hover {
   }
 
 }
+.navbar-toggler{
+  height: 50px !important;
+  width: 50px;
+}
 .principalNavBar{
   height: 62px ;
   background-color: #fb0 !important;
@@ -416,4 +420,26 @@ a.custom-card:hover {
   text-decoration: none;
   color: black;
   cursor: pointer;
+}
+.swal2-confirm{
+  background-color: #FFBB00!important;
+}
+.swal2-success-ring{
+  border: .25em solid rgba(255, 187, 0,.3)!important;
+  color: #FFBB00!important;
+
+}
+.swal2-success-line-long{
+  color: rgb(255, 187, 0)!important;
+  background-color: #FFBB00!important;
+}
+.swal2-success-line-tip{
+  color: #FFBB00!important;
+  background-color: #FFBB00!important;
+}
+.swal2-icon-show{
+  border-color: #FFBB00!important;
+}
+.swal2-icon-show{
+  color: #FFBB00 !important;
 }

@@ -4,7 +4,19 @@
   background-color: #fb0 !important;
 }
 
-
+/* Modo Oscuro */
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+.mode {    
+      transition: background 0.3s, color 0.3s;
+}
+/*  */
 .offcanvas-start{
   background-color: #202020;
 }
@@ -19,17 +31,30 @@
 }
 main{
     margin-top: 62px;
+}*{
+  transition: all ease 0.5s;
 }
-.dark-mode{
-  background-color: #121212 !important;
-  color: white !important;
+.navbar{
+  background-color: #ffc800;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
 }
-.light-mode{
-  background-color: white !important;
-  color: black !important;
+.nav-link{
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
-.mode {
-  transition: background 0.3s, color 0.3s;
+.navbar-item{
+  margin-top: 10px !important;
+}
+.navbar-toggler{
+  height: 50px !important;
+  width: 50px;
+}
+.navbar-nav{
+    display: flex;
+    justify-content: space-evenly !important;
 }
 #carrito {
     height: 40px;
@@ -38,4 +63,19 @@ main{
     background-size: 30px;
     background-repeat: no-repeat;
     background-position: center;
+}
+@media (max-width: 992px){
+  .navbar-nav {
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #202020;
+  }
+  .nav-link{
+    color: wheat !important;
+  }
+  #carrito{
+    background-color: #ffbb00;
+    border-radius: 10px;
+    margin: 5px;
+  }
 }
