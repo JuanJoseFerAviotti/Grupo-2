@@ -15,12 +15,6 @@
 .mode {    
       transition: background 0.3s, color 0.3s;
 }
-.jumbotron {
-
-}
-.jumbotron .display-4 {
-  font-weight: bold;
-}
 .album {
   background-color:none !important;
 }
@@ -41,44 +35,6 @@ nav a {
   .bd-placeholder-img-lg {
     font-size: 3.5rem;
   }
-}
-
-.jumbotron {
-  height: 50vh;
-  padding: 5em inherit;
-  margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: black;
-  font-weight: bold;
-}
-
-@media (min-width: 768px) {
-  .jumbotron {
-    ;
-  }
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  text-shadow: 1px 1px 2px grey;
-}
-
-.jumbotron .lead {
-  font-size: 38px;
 }
 
 footer {
@@ -241,6 +197,9 @@ a.custom-card:hover {
     background-repeat: no-repeat;
     background-position: center;
 }
+#banner {
+  width: 100vw;
+}
 @media (max-width: 992px){
   .navbar-nav {
     border-radius: 10px;
@@ -255,16 +214,59 @@ a.custom-card:hover {
     margin: 5px;
   }
   .jumbotron {
+    display: flex;
   width: 100vw;
-  max-height: 30vh;
-  padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53C0FB;
-  background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: black;
   font-weight: bold;
 }
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+.jumbotron .container {
+  max-width: 40rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  text-shadow: 1px 1px 2px grey;
+}
+
+.jumbotron .lead {
+  font-size: 38px;
+}
+}
+@media (max-width: 500px){
+  #banner {
+  display: none;
+}
+#banner2{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+#IMG1{
+  display: flex;
+}
+#IMG2{
+  display: flex;
+}
+}
+#banner2{
+  display: none;
+}
+#IMG1{
+  display: none;
+  height: 50%;
+}
+#IMG2{
+  display: none;
+  height: 50%;
 }
