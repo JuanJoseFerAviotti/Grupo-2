@@ -1,9 +1,42 @@
+/* All */
 .jumbotron,
 .card-body,
 .container,
 .site-header {
   font-family: 'Verdana', serif !important;
 }
+*{
+  transition: all ease 0.5s;
+}
+/* Header */
+.navbar{
+  background-color: #ffbb00;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+}
+.nav-link{
+  color: black;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.navbar-toggler{
+  height: 50px !important;
+  width: 50px;
+}
+.navbar-nav{
+    display: flex;
+    justify-content: space-evenly !important;
+}
+#carrito {
+    height: 40px;
+    width: 40px;
+    background-image: url(../img/carrito-gris-oscuro.svg);
+    background-size: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* Functions */
 .dark-mode{
   background-color: #121212 !important;
   color: white !important;
@@ -15,6 +48,10 @@
 .mode {    
       transition: background 0.3s, color 0.3s;
 }
+/*  */
+/*  */
+
+
 .album {
   background-color:none !important;
 }
@@ -167,46 +204,22 @@ a.custom-card:hover {
   border-radius: 20px;
   color: white;
 }
-*{
-  transition: all ease 0.5s;
-}
-.navbar{
-  background-color: #ffc800;
-  height: 70px;
-  display: flex;
-  justify-content: space-around;
-}
-.nav-link{
-  color: black;
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.navbar-toggler{
-  height: 50px !important;
-  width: 50px;
-}
-.navbar-nav{
-    display: flex;
-    justify-content: space-evenly !important;
-}
-#carrito {
-    height: 40px;
-    width: 40px;
-    background-image: url(../img/carrito-gris-oscuro.svg);
-    background-size: 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 #banner {
   width: 100vw;
 }
-@media (max-width: 992px){
+@media (max-width: 991px){
   .navbar-nav {
-    border-radius: 10px;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 0px 10px 30px 10px;
     background-color: #202020;
+  }
+  .navbar-collapse{
+    z-index: 20;
   }
   .nav-link{
     color: wheat !important;
+    margin-top: 5px;
   }
   #carrito{
     background-color: #ffbb00;
@@ -214,7 +227,6 @@ a.custom-card:hover {
     margin: 5px;
   }
   .jumbotron {
-    display: flex;
   width: 100vw;
   margin-bottom: 0;
   background-size: cover;
@@ -238,7 +250,6 @@ a.custom-card:hover {
   border-radius: 10px;
   text-shadow: 1px 1px 2px grey;
 }
-
 .jumbotron .lead {
   font-size: 38px;
 }

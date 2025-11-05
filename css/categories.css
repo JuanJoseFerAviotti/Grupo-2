@@ -1,39 +1,15 @@
-
-.principalNavBar{
-  height: 62px ;
-  background-color: #fb0 !important;
+/* All */
+.jumbotron,
+.card-body,
+.container,
+.site-header {
+  font-family: 'Verdana', serif !important;
 }
-
-/* Modo Oscuro */
-.dark-mode{
-  background-color: #121212 !important;
-  color: white !important;
-}
-.light-mode{
-  background-color: white !important;
-  color: black !important;
-}
-.mode {    
-      transition: background 0.3s, color 0.3s;
-}
-/*  */
-.offcanvas-start{
-  background-color: #202020;
-}
-.offcanvas-header{
-  background-color: #303030;
-}
-.offcanvas-title{
-  color: #fb0;
-}
-.nav-link{
-  color: #fff !important;
-}
-main{
-    margin-top: 62px;
-}*{
+*{
   transition: all ease 0.5s;
 }
+
+/* Header */
 .navbar{
   background-color: #ffc800;
   height: 70px;
@@ -44,9 +20,6 @@ main{
   color: black;
   font-weight: bold;
   font-size: 1.2rem;
-}
-.navbar-item{
-  margin-top: 10px !important;
 }
 .navbar-toggler{
   height: 50px !important;
@@ -64,14 +37,19 @@ main{
     background-repeat: no-repeat;
     background-position: center;
 }
-@media (max-width: 992px){
+@media (max-width: 991px){
   .navbar-nav {
-    border-radius: 10px;
+    z-index: 100;
     padding: 10px;
+    border-radius: 0px 10px 30px 10px;
     background-color: #202020;
+  }
+  .navbar-collapse{
+    z-index: 20;
   }
   .nav-link{
     color: wheat !important;
+    margin-top: 5px;
   }
   #carrito{
     background-color: #ffbb00;
@@ -79,3 +57,17 @@ main{
     margin: 5px;
   }
 }
+/* Functions */
+.dark-mode{
+  background-color: #121212 !important;
+  color: white !important;
+}
+.light-mode{
+  background-color: white !important;
+  color: black !important;
+}
+.mode {    
+      transition: background 0.3s, color 0.3s;
+}
+/*  Main \ center */
+
