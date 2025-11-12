@@ -1,15 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
-  renderCart(); // renderiza ítems
-  setupShippingListeners();
-  setupPaymentListeners();
-  setupCheckoutButton();
-  // recalcula envío/totales según opción seleccionada (por defecto)
-  updateShippingAndTotals();
+  renderizarCarrito();
+  tiposDeEnvios();
+  formasDePago();
+  chequeosAlComprar();
+  actualizarEnvioYTotales();
 });
 
 
-// reemplazo / añadido: función que renderiza el carrito y botones de eliminar
-function renderCart() {
+function renderizarCarrito() {
   const cartContainer = document.getElementById("cart-container");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -17,14 +15,13 @@ function renderCart() {
 
   if (cart.length === 0) {
     cartContainer.innerHTML = "<p>Tu carrito está vacío.🛍️</p>";
-    // limpiar resumen
     const CostoTotal = document.getElementById("costo");
     const CostoEnvio = document.getElementById("costoEnvio");
     const TotalPrice = document.getElementById("CostoTotal");
     if (CostoTotal) CostoTotal.textContent = "";
     if (CostoEnvio) CostoEnvio.textContent = "";
     if (TotalPrice) TotalPrice.textContent = "";
-    updateCartCount();
+    actualizarContadorCarrito();
     return;
   }
 
@@ -70,9 +67,8 @@ function renderCart() {
 
     cartContainer.appendChild(cartItem);
 
-    // listeners
     const input = cartItem.querySelector('.cantidad-input');
-    input.addEventListener('change', updateItemQuantity);
+    input.addEventListener('change', actualizarCantidad);
 
     const removeBtn = cartItem.querySelector('.remove-btn');
     removeBtn.addEventListener('click', (e) => {
@@ -82,7 +78,7 @@ function renderCart() {
     });
   });
 
-  // actualizar resumen
+  
   const cartTotal = cart.reduce((sum, item) => sum + (item.cost * item.count), 0);
   const envioC = cart.reduce((sum, item) => sum + (100 * item.count), 0);
   const totalprice = cartTotal + envioC;
@@ -93,25 +89,23 @@ function renderCart() {
   const TotalPrice = document.getElementById("CostoTotal");
 
   if (CostoTotal) CostoTotal.innerHTML = `${currency} ${cartTotal}`;
-  // costos de envío y total se actualizan por updateShippingAndTotals (llamada debajo)
   if (CostoEnvio) CostoEnvio.innerHTML = `${currency} ${envioC}`;
   if (TotalPrice) TotalPrice.innerHTML = `${currency} ${totalprice}`;
 
-  updateCartCount();
-  // recalcular envíos/totales con la selección actual
-  updateShippingAndTotals();
+  actualizarContadorCarrito();
+  actualizarEnvioYTotales();
 }
 
-// nueva función: eliminar item por índice y re-renderizar
+
 function removeItem(index) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   if (index < 0 || index >= cart.length) return;
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
-  renderCart();
+  renderizarCarrito();
 }
 
-function updateCartCount() {
+function actualizarContadorCarrito() {
   try {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
     const cartCount = document.getElementById("cart-count");
@@ -187,8 +181,8 @@ function toggleMode(isDark) {
   }
 }
 
-// Función para actualizar cantidad y totales
-function updateItemQuantity(e) {
+
+function actualizarCantidad(e) {
     const input = e.target;
     const newCount = parseInt(input.value);
     const itemIndex = parseInt(input.dataset.index);
@@ -217,20 +211,19 @@ function updateItemQuantity(e) {
     const TotalPrice = document.getElementById("CostoTotal");
 
     if (CostoTotal) CostoTotal.innerHTML = `${currency} ${cartTotal}`;
-    // actualizar valores base y luego recalcular envío y total final
-    updateShippingAndTotals();
-
-    updateCartCount();
+   
+    actualizarEnvioYTotales();
+    actualizarContadorCarrito();
 }
 
-// Obtiene porcentaje seleccionado (por defecto 5)
+
 function getSelectedShippingPercentage() {
   const sel = document.querySelector('input[name="shippingType"]:checked');
   return sel ? parseFloat(sel.value) : 5;
 }
 
-// recalcula costo de envío y total final en base al subtotal y porcentaje seleccionado
-function updateShippingAndTotals() {
+
+function actualizarEnvioYTotales() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const currency = cart.length > 0 ? cart[0].currency : "$";
   const subtotal = cart.reduce((sum, item) => sum + (item.cost * item.count), 0);
@@ -247,25 +240,23 @@ function updateShippingAndTotals() {
   if (TotalPrice) TotalPrice.innerHTML = `${currency} ${total.toFixed(2)}`;
 }
 
-function setupShippingListeners() {
+function tiposDeEnvios() {
   document.querySelectorAll('.shipping-type').forEach(r => {
     r.addEventListener('change', () => {
-      updateShippingAndTotals();
+      actualizarEnvioYTotales();
     });
   });
 }
 
-function setupPaymentListeners() {
-  // por ahora solo placeholder para futura validación visual
+function formasDePago() {
   document.querySelectorAll('.payment-type').forEach(r => {
     r.addEventListener('change', () => {
-      // se puede mostrar campos extra según método
-      // console.log('Pago:', r.dataset.name);
+      console.log('Pago:', r.dataset.name);
     });
   });
 }
 
-function setupCheckoutButton() {
+function chequeosAlComprar() {
   const btn = document.getElementById('btnComprar');
   if (!btn) return;
   btn.addEventListener('click', () => {
@@ -274,30 +265,29 @@ function setupCheckoutButton() {
       alert('El carrito está vacío.');
       return;
     }
-    // validar dirección mínima
-    const department = (document.getElementById('department')?.value || '').trim();
-    const locality = (document.getElementById('locality')?.value || '').trim();
-    const street = (document.getElementById('street')?.value || '').trim();
-    const number = (document.getElementById('number')?.value || '').trim();
-    if (!department || !locality || !street || !number) {
+    
+    const departmento = (document.getElementById('department')?.value || '').trim();
+    const localidad = (document.getElementById('locality')?.value || '').trim();
+    const calle = (document.getElementById('street')?.value || '').trim();
+    const numero = (document.getElementById('number')?.value || '').trim();
+    if (!departmento || !localidad || !calle || !numero) {
       alert('Por favor completa los campos de dirección obligatorios.');
       return;
     }
-    const shippingSel = document.querySelector('input[name="shippingType"]:checked');
-    const paymentSel = document.querySelector('input[name="paymentType"]:checked');
-    const order = {
+    const envioSel = document.querySelector('input[name="shippingType"]:checked');
+    const pagoSel = document.querySelector('input[name="paymentType"]:checked');
+    const orden = {
       cart,
-      shipping: { name: shippingSel?.dataset?.name || '', pct: parseFloat(shippingSel?.value || 0) },
+      shipping: { name: envioSel?.dataset?.name || '', pct: parseFloat(envioSel?.value || 0) },
       address: {
-        department, locality, street, number, corner: (document.getElementById('corner')?.value || '').trim()
+        departmento, localidad, calle, numero, esquina: (document.getElementById('corner')?.value || '').trim()
       },
-      payment: { method: paymentSel?.value || '', name: paymentSel?.dataset?.name || '' },
+      payment: { method: pagoSel?.value || '', name: pagoSel?.dataset?.name || '' },
       date: new Date().toISOString()
     };
-    localStorage.setItem('lastOrder', JSON.stringify(order));
-    // limpiar carrito y recargar vista
+    localStorage.setItem('lastOrder', JSON.stringify(orden));
     localStorage.removeItem('cart');
     alert('Compra realizada con éxito.');
-    renderCart(); // re-render vacío
+    renderizarCarrito(); 
   });
 }

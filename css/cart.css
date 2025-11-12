@@ -125,3 +125,16 @@ footer {
         gap: 1rem;
     }
 }
+#checkoutTabContent .card {
+      max-width: 100% !important;
+      height: auto !important;
+      width: 100% !important;
+    }
+    
+    #checkoutTabContent .card-body {
+      height: auto !important;
+      min-height: auto !important;
+    }
+    i {
+        color: black;
+    }
