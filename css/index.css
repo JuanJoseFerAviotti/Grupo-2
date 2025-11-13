@@ -196,9 +196,10 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
-#usuarioo{
-  color: rgb(253, 254, 255);
+#carrito{
+  background-color: #dd9900;
 }
+
 #buscarInput{
   width: 50%;
   border-radius: 20px;
