@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function formarCarrito() {
   const cartContainer = document.getElementById("cart-container");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+   
 
   if (!cartContainer) return;
 
@@ -22,6 +23,7 @@ function formarCarrito() {
     if (CostoEnvio) CostoEnvio.textContent = "";
     if (TotalPrice) TotalPrice.textContent = "";
     actualizarContadorCarrito();
+    cartContainer.style.display = 'none';
     return;
   }
 
