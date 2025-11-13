@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  renderizarCarrito();
+  formarCarrito();
   tiposDeEnvios();
   formasDePago();
   chequeosAlComprar();
@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-function renderizarCarrito() {
+function formarCarrito() {
   const cartContainer = document.getElementById("cart-container");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -102,7 +102,7 @@ function removeItem(index) {
   if (index < 0 || index >= cart.length) return;
   cart.splice(index, 1);
   localStorage.setItem("cart", JSON.stringify(cart));
-  renderizarCarrito();
+  formarCarrito();
 }
 
 function actualizarContadorCarrito() {
@@ -288,6 +288,6 @@ function chequeosAlComprar() {
     localStorage.setItem('lastOrder', JSON.stringify(orden));
     localStorage.removeItem('cart');
     alert('Compra realizada con éxito.');
-    renderizarCarrito(); 
+    formarCarrito(); 
   });
 }
