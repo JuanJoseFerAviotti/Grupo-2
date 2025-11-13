@@ -15,15 +15,28 @@ function formarCarrito() {
   if (!cartContainer) return;
 
   if (cart.length === 0) {
-    cartContainer.innerHTML = "<p>Tu carrito está vacío.🛍️</p>";
+    cartContainer.innerHTML = `
+      <div class="empty-cart-message text-center py-5">
+        <i class="bi bi-cart-x" style="font-size: 5rem; color: #6c757d;"></i>
+        <h3 class="mt-3 mb-2">Tu carrito está vacío</h3>
+        <p class="text-muted mb-4">Aún no has agregado productos a tu carrito</p>
+        <a href="categories.html" class="btn btn-warning btn-lg">
+          <i class="bi bi-shop"></i> Ir a comprar
+        </a>
+      </div>
+    `;
     const CostoTotal = document.getElementById("costo");
     const CostoEnvio = document.getElementById("costoEnvio");
     const TotalPrice = document.getElementById("CostoTotal");
+    const BotonComprar = document.getElementById("btnComprar");
+    if (BotonComprar) {
+      BotonComprar.disabled = true;
+    }
     if (CostoTotal) CostoTotal.textContent = "";
     if (CostoEnvio) CostoEnvio.textContent = "";
     if (TotalPrice) TotalPrice.textContent = "";
+    
     actualizarContadorCarrito();
-    cartContainer.style.display = 'none';
     return;
   }
 
@@ -309,7 +322,7 @@ function mostrarCamposPago(tipo) {
         <h6 class="mb-3">Datos bancarios</h6>
         <div class="mb-3">
           <label for="bankName" class="form-label">Banco *</label>
-          <select class="form-select" id="bankName">
+          <select class="form-select" id="bankName" required>
             <option value="">Selecciona tu banco</option>
             <option value="brou">Banco República (BROU)</option>
             <option value="santander">Santander</option>
@@ -329,7 +342,7 @@ function mostrarCamposPago(tipo) {
         </div>
         <div class="mb-3">
           <label for="accountType" class="form-label">Tipo de cuenta *</label>
-          <select class="form-select" id="accountType">
+          <select class="form-select" id="accountType" required>
             <option value="">Selecciona el tipo</option>
             <option value="ahorro">Caja de ahorro</option>
             <option value="corriente">Cuenta corriente</option>
@@ -361,48 +374,80 @@ function validarCamposPago() {
   if (!pagoSel) return false;
   
   if (pagoSel.value === 'creditCard') {
-    const cardNumber = (document.getElementById('cardNumber')?.value || '').trim().replace(/\s/g, '');
-    const cardName = (document.getElementById('cardName')?.value || '').trim();
-    const cardExpiry = (document.getElementById('cardExpiry')?.value || '').trim();
-    const cardCVV = (document.getElementById('cardCVV')?.value || '').trim();
+    const cardNumber = (document.getElementById('cardNumber').value || '').trim().replace(/\s/g, '');
+    const cardName = (document.getElementById('cardName').value || '').trim();
+    const cardExpiry = (document.getElementById('cardExpiry').value || '').trim();
+    const cardCVV = (document.getElementById('cardCVV').value || '').trim();
     
     if (!cardNumber || cardNumber.length < 13) {
-      alert('Por favor ingresa un número de tarjeta válido.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa un número de tarjeta válido."
+        });
       return false;
     }
     if (!cardName) {
-      alert('Por favor ingresa el nombre del titular.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa el nombre del titular."
+        });
       return false;
     }
     if (!cardExpiry || cardExpiry.length !== 5) {
-      alert('Por favor ingresa una fecha de vencimiento válida (MM/AA).');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa una fecha de vencimiento válida (MM/AA)."
+        });
       return false;
     }
     if (!cardCVV || cardCVV.length < 3) {
-      alert('Por favor ingresa un CVV válido.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa un CVV válido."
+        });
       return false;
     }
     
   } else if (pagoSel.value === 'bankTransfer') {
-    const bankName = (document.getElementById('bankName')?.value || '').trim();
-    const accountHolder = (document.getElementById('accountHolder')?.value || '').trim();
-    const accountNumber = (document.getElementById('accountNumber')?.value || '').trim();
-    const accountType = (document.getElementById('accountType')?.value || '').trim();
+    const bankName = (document.getElementById('bankName').value || '').trim();
+    const accountHolder = (document.getElementById('accountHolder').value || '').trim();
+    const accountNumber = (document.getElementById('accountNumber').value || '').trim();
+    const accountType = (document.getElementById('accountType').value || '').trim();
     
     if (!bankName) {
-      alert('Por favor selecciona tu banco.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor selecciona tu banco."
+        });
       return false;
     }
     if (!accountHolder) {
-      alert('Por favor ingresa el titular de la cuenta.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa el titular de la cuenta."
+        });
       return false;
     }
     if (!accountNumber) {
-      alert('Por favor ingresa el número de cuenta.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor ingresa el número de cuenta."
+        });
       return false;
     }
     if (!accountType) {
-      alert('Por favor selecciona el tipo de cuenta.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor selecciona el tipo de cuenta."
+        });
       return false;
     }
   }
@@ -415,17 +460,17 @@ function chequeosAlComprar() {
   if (!btn) return;
   btn.addEventListener('click', () => {
     const cart = JSON.parse(localStorage.getItem("cart")) || [];
-    if (cart.length === 0) {
-      alert('El carrito está vacío.');
-      return;
-    }
     
-    const departmento = (document.getElementById('department')?.value || '').trim();
-    const localidad = (document.getElementById('locality')?.value || '').trim();
-    const calle = (document.getElementById('street')?.value || '').trim();
-    const numero = (document.getElementById('number')?.value || '').trim();
+    const departmento = (document.getElementById('department').value || '').trim();
+    const localidad = (document.getElementById('locality').value || '').trim();
+    const calle = (document.getElementById('street').value || '').trim();
+    const numero = (document.getElementById('number').value || '').trim();
     if (!departmento || !localidad || !calle || !numero) {
-      alert('Por favor completa los campos de dirección obligatorios.');
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Por favor completa los campos de dirección obligatorios."
+        });
       return;
     }
     
@@ -436,22 +481,22 @@ function chequeosAlComprar() {
     const envioSel = document.querySelector('input[name="shippingType"]:checked');
     const pagoSel = document.querySelector('input[name="paymentType"]:checked');
     
-    let paymentData = { method: pagoSel?.value || '', name: pagoSel?.dataset?.name || '' };
+    let paymentData = { method: pagoSel.value || '', name: pagoSel.dataset.name || '' };
     
-    if (pagoSel?.value === 'creditCard') {
-      paymentData.cardNumber = document.getElementById('cardNumber')?.value.replace(/\s/g, '').slice(-4); // Solo últimos 4 dígitos
-      paymentData.cardName = document.getElementById('cardName')?.value;
-    } else if (pagoSel?.value === 'bankTransfer') {
-      paymentData.bankName = document.getElementById('bankName')?.value;
-      paymentData.accountHolder = document.getElementById('accountHolder')?.value;
-      paymentData.accountType = document.getElementById('accountType')?.value;
+    if (pagoSel.value === 'creditCard') {
+      paymentData.cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '').slice(-4); // Solo últimos 4 dígitos
+      paymentData.cardName = document.getElementById('cardName').value;
+    } else if (pagoSel.value === 'bankTransfer') {
+      paymentData.bankName = document.getElementById('bankName').value;
+      paymentData.accountHolder = document.getElementById('accountHolder').value;
+      paymentData.accountType = document.getElementById('accountType').value;
     }
     
     const orden = {
       cart,
-      shipping: { name: envioSel?.dataset?.name || '', pct: parseFloat(envioSel?.value || 0) },
+      shipping: { name: envioSel.dataset.name || '', pct: parseFloat(envioSel.value || 0) },
       address: {
-        departmento, localidad, calle, numero, esquina: (document.getElementById('corner')?.value || '').trim()
+        departmento, localidad, calle, numero, esquina: (document.getElementById('corner').value || '').trim()
       },
       payment: paymentData,
       date: new Date().toISOString()
@@ -459,7 +504,11 @@ function chequeosAlComprar() {
     
     localStorage.setItem('lastOrder', JSON.stringify(orden));
     localStorage.removeItem('cart');
-    alert('Compra realizada con éxito.');
+    Swal.fire({
+    title: "Compra realizada con éxito.!",
+    icon: "success",
+    draggable: true
+    });
     formarCarrito(); 
   });
 }

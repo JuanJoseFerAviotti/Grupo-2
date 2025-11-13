@@ -46,7 +46,7 @@
     </div>
 
     <!-- Tabs con Bootstrap -->
-    <div class="m-3">
+    <div class="m-3" id="tabs">
       <ul class="nav nav-tabs mb-3" id="checkoutTabs" role="tablist">
         <li class="nav-item" role="presentation">
           <button class="nav-link active mode" id="resumen-tab" data-bs-toggle="tab" data-bs-target="#resumen" type="button" role="tab" aria-controls="resumen" aria-selected="true">
@@ -111,14 +111,14 @@
                 <input class="form-check-input shipping-type" type="radio" name="shippingType" id="premium" value="15" data-name="Premium 2 a 5 días (15%)">
                 <label class="form-check-label" for="premium">
                   <strong>Premium 2 a 5 días (15%)</strong>
-                  <small class="d-block text-muted">Envío más rápido</small>
+                  <small class="d-block text-muted">Envío super rápido</small>
                 </label>
               </div>
               <div class="form-check mb-3">
                 <input class="form-check-input shipping-type" type="radio" name="shippingType" id="express" value="7" data-name="Express 5 a 8 días (7%)">
                 <label class="form-check-label" for="express">
                   <strong>Express 5 a 8 días (7%)</strong>
-                  <small class="d-block text-muted">Envío estándar</small>
+                  <small class="d-block text-muted">Envío rápido</small>
                 </label>
               </div>
               <div class="form-check">
@@ -214,6 +214,7 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
