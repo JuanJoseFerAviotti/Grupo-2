@@ -49,35 +49,35 @@
     <div class="m-3">
       <ul class="nav nav-tabs mb-3" id="checkoutTabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="resumen-tab" data-bs-toggle="tab" data-bs-target="#resumen" type="button" role="tab" aria-controls="resumen" aria-selected="true">
-            <i class="bi bi-receipt"> Resumen</i> 
+          <button class="nav-link active mode" id="resumen-tab" data-bs-toggle="tab" data-bs-target="#resumen" type="button" role="tab" aria-controls="resumen" aria-selected="true">
+            <i class="bi bi-receipt mode"> Resumen</i> 
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab" aria-controls="envio" aria-selected="false">
-            <i class="bi bi-truck"> Envío</i> 
+          <button class="nav-link mode" id="envio-tab" data-bs-toggle="tab" data-bs-target="#envio" type="button" role="tab" aria-controls="envio" aria-selected="false">
+            <i class="bi bi-truck mode"> Envío</i> 
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab" aria-controls="direccion" aria-selected="false">
-            <i class="bi bi-geo-alt"> Dirección</i> 
+          <button class="nav-link mode" id="direccion-tab" data-bs-toggle="tab" data-bs-target="#direccion" type="button" role="tab" aria-controls="direccion" aria-selected="false">
+            <i class="bi bi-geo-alt mode"> Dirección</i> 
           </button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab" aria-controls="pago" aria-selected="false">
-            <i class="bi bi-credit-card"> Pago</i>
+          <button class="nav-link mode" id="pago-tab" data-bs-toggle="tab" data-bs-target="#pago" type="button" role="tab" aria-controls="pago" aria-selected="false">
+            <i class="bi bi-credit-card mode"> Pago</i>
           </button>
         </li>
       </ul>
 
-      <div class="tab-content" id="checkoutTabContent">
+      <div class="tab-content mode" id="checkoutTabContent">
         <!-- Tab Resumen -->
         <div class="tab-pane fade show active" id="resumen" role="tabpanel" aria-labelledby="resumen-tab">
           <div class="card">
             <div class="card-header bg-primary text-white">
               <h5 class="mb-0"><i class="bi bi-receipt"></i> Resumen de Compra</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body mode">
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <span>Artículos en el carrito:</span>
                 <span id="cart-count" class="badge bg-danger rounded-pill">0</span>
@@ -105,7 +105,7 @@
             <div class="card-header bg-success text-white">
               <h5 class="mb-0"><i class="bi bi-truck"></i> Tipo de Envío</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body mode">
               <p class="text-muted mb-3">Selecciona tu tipo de envío preferido</p>
               <div class="form-check mb-3">
                 <input class="form-check-input shipping-type" type="radio" name="shippingType" id="premium" value="15" data-name="Premium 2 a 5 días (15%)">
@@ -138,24 +138,24 @@
             <div class="card-header bg-info text-white">
               <h5 class="mb-0"><i class="bi bi-geo-alt"></i> Dirección de Envío</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body mode">
               <p class="text-muted mb-3">Ingresa la dirección donde recibirás tu pedido</p>
               <div class="mb-3">
                 <label for="department" class="form-label">Departamento *</label>
-                <input id="department" class="form-control" type="text" placeholder="Ej: Montevideo">
+                <input id="department" class="form-control" type="text" placeholder="Ej: Montevideo" required>
               </div>
               <div class="mb-3">
                 <label for="locality" class="form-label">Localidad *</label>
-                <input id="locality" class="form-control" type="text" placeholder="Ej: Centro">
+                <input id="locality" class="form-control" type="text" placeholder="Ej: Centro" required>
               </div>
               <div class="mb-3">
                 <label for="street" class="form-label">Calle *</label>
-                <input id="street" class="form-control" type="text" placeholder="Ej: Av. 18 de Julio">
+                <input id="street" class="form-control" type="text" placeholder="Ej: Av. 18 de Julio" required>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label for="number" class="form-label">Número *</label>
-                  <input id="number" class="form-control" type="text" placeholder="Ej: 1234">
+                  <input id="number" class="form-control" type="text" placeholder="Ej: 1234" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="corner" class="form-label">Esquina</label>
@@ -173,7 +173,7 @@
             <div class="card-header bg-warning">
               <h5 class="mb-0"><i class="bi bi-credit-card"></i> Forma de Pago</h5>
             </div>
-            <div class="card-body">
+            <div class="card-body mode">
               <p class="text-muted mb-3">Selecciona tu método de pago preferido</p>
               <div class="form-check mb-3">
                 <input class="form-check-input payment-type" type="radio" name="paymentType" id="creditCard" value="creditCard" data-name="Tarjeta de crédito" checked>
