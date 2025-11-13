@@ -125,49 +125,41 @@ function actualizarContadorCarrito() {
 
 // Modo oscuro/claro
 const body = document.body;
-    const button = document.getElementById("modeButton");
-  
+const button = document.getElementById("modeButton");
 
-   
-    const savedTheme = localStorage.getItem("theme");
+const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "dark") {
-      body.classList.replace("light-mode", "dark-mode");
-      button.classList.replace("btn-dark", "btn-light");
-      button.textContent = "Light Mode";
-       toggleMode(true);
-    }
- 
-    let dark = false;
-    button.addEventListener("click", () => {
-      
-     const isDark = body.classList.toggle("dark-mode");
-      body.classList.toggle("light-mode", !isDark); 
-      if (isDark) {
-       
-      
-        button.classList.replace("btn-dark", "btn-light");
-        button.textContent = "Light Mode";
-        localStorage.setItem("theme", "dark");
-      } else {
-       
-        
-        button.classList.replace("btn-light", "btn-dark");
-        button.textContent = "Dark Mode";
-        localStorage.setItem("theme", "light");
-      } 
+if (savedTheme === "dark") {
+  body.classList.replace("light-mode", "dark-mode");
+  button.classList.replace("btn-dark", "btn-light");
+  button.textContent = "Light Mode";
+  toggleMode(true);
+}
 
-toggleMode(isDark);
+let dark = false;
+button.addEventListener("click", () => {
+  const isDark = body.classList.toggle("dark-mode");
+  body.classList.toggle("light-mode", !isDark); 
+  if (isDark) {
+    button.classList.replace("btn-dark", "btn-light");
+    button.textContent = "Light Mode";
+    localStorage.setItem("theme", "dark");
+  } else {
+    button.classList.replace("btn-light", "btn-dark");
+    button.textContent = "Dark Mode";
+    localStorage.setItem("theme", "light");
+  } 
+
+  toggleMode(isDark);
 });
-function toggleMode(isDark) {
 
+function toggleMode(isDark) {
   for (let sheet of document.styleSheets) {
     try {
       for (let rule of sheet.cssRules) {
         if (rule.selectorText === '.mode') {
-          
           if (isDark) {
-              rule.style.setProperty('background-color', 'black', 'important');
+            rule.style.setProperty('background-color', 'black', 'important');
             rule.style.setProperty('color', 'white', 'important');
           } else {
             rule.style.setProperty('background-color', 'white', 'important');
@@ -176,7 +168,6 @@ function toggleMode(isDark) {
         }
       }
     } catch (e) {
-      
     }
   }
 }
@@ -217,7 +208,7 @@ function actualizarCantidad(e) {
 }
 
 
-function getSelectedShippingPercentage() {
+function porcentajeSeleccionado() {
   const sel = document.querySelector('input[name="shippingType"]:checked');
   return sel ? parseFloat(sel.value) : 5;
 }
@@ -227,7 +218,7 @@ function actualizarEnvioYTotales() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const currency = cart.length > 0 ? cart[0].currency : "$";
   const subtotal = cart.reduce((sum, item) => sum + (item.cost * item.count), 0);
-  const pct = getSelectedShippingPercentage();
+  const pct = porcentajeSeleccionado();
   const shippingCost = +(subtotal * (pct / 100));
   const total = subtotal + shippingCost;
 
@@ -248,12 +239,173 @@ function tiposDeEnvios() {
   });
 }
 
+function mostrarCamposPago(tipo) {
+  let camposContainer = document.getElementById('payment-fields-container');
+  
+  if (!camposContainer) {
+    camposContainer = document.createElement('div');
+    camposContainer.id = 'payment-fields-container';
+    camposContainer.className = 'mt-4';
+    
+    const pagoCardBody = document.querySelector('#pago .card-body');
+    if (pagoCardBody) {
+      pagoCardBody.appendChild(camposContainer);
+    }
+  }
+  
+  camposContainer.innerHTML = '';
+  
+  if (tipo === 'creditCard') {
+    camposContainer.innerHTML = `
+      <div class="border-top pt-3">
+        <h6 class="mb-3">Datos de la tarjeta</h6>
+        <div class="mb-3">
+          <label for="cardNumber" class="form-label">Número de tarjeta *</label>
+          <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+        </div>
+        <div class="mb-3">
+          <label for="cardName" class="form-label">Nombre del titular *</label>
+          <input type="text" class="form-control" id="cardName" placeholder="Como aparece en la tarjeta" required>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cardExpiry" class="form-label">Fecha de vencimiento *</label>
+            <input type="text" class="form-control" id="cardExpiry" placeholder="MM/AA" maxlength="5" required>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="cardCVV" class="form-label">CVV *</label>
+            <input type="text" class="form-control" id="cardCVV" placeholder="123" maxlength="4" required>
+          </div>
+        </div>
+        <small class="text-muted">* Campos obligatorios</small>
+      </div>
+    `;
+    
+    const cardNumberInput = document.getElementById('cardNumber');
+    if (cardNumberInput) {
+      cardNumberInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\s/g, '');
+        let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+        e.target.value = formattedValue;
+      });
+    }
+    
+    const cardExpiryInput = document.getElementById('cardExpiry');
+    if (cardExpiryInput) {
+      cardExpiryInput.addEventListener('input', (e) => {
+        let value = e.target.value.replace(/\D/g, '');
+        if (value.length >= 2) {
+          value = value.slice(0, 2) + '/' + value.slice(2, 4);
+        }
+        e.target.value = value;
+      });
+    }
+    
+  } else if (tipo === 'bankTransfer') {
+    camposContainer.innerHTML = `
+      <div class="border-top pt-3">
+        <h6 class="mb-3">Datos bancarios</h6>
+        <div class="mb-3">
+          <label for="bankName" class="form-label">Banco *</label>
+          <select class="form-select" id="bankName">
+            <option value="">Selecciona tu banco</option>
+            <option value="brou">Banco República (BROU)</option>
+            <option value="santander">Santander</option>
+            <option value="itau">Itaú</option>
+            <option value="bbva">BBVA</option>
+            <option value="scotiabank">Scotiabank</option>
+            <option value="heritage">Heritage</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label for="accountHolder" class="form-label">Titular de la cuenta *</label>
+          <input type="text" class="form-control" id="accountHolder" placeholder="Nombre completo del titular" required>
+        </div>
+        <div class="mb-3">
+          <label for="accountNumber" class="form-label">Número de cuenta *</label>
+          <input type="text" class="form-control" id="accountNumber" placeholder="Número de cuenta bancaria" required>
+        </div>
+        <div class="mb-3">
+          <label for="accountType" class="form-label">Tipo de cuenta *</label>
+          <select class="form-select" id="accountType">
+            <option value="">Selecciona el tipo</option>
+            <option value="ahorro">Caja de ahorro</option>
+            <option value="corriente">Cuenta corriente</option>
+          </select>
+        </div>
+        
+        <small class="text-muted">* Campos obligatorios</small>
+      </div>
+    `;
+  }
+}
+
 function formasDePago() {
   document.querySelectorAll('.payment-type').forEach(r => {
-    r.addEventListener('change', () => {
+    r.addEventListener('change', (e) => {
       console.log('Pago:', r.dataset.name);
+      mostrarCamposPago(r.value);
     });
   });
+  
+  const defaultPayment = document.querySelector('input[name="paymentType"]:checked');
+  if (defaultPayment) {
+    mostrarCamposPago(defaultPayment.value);
+  }
+}
+
+function validarCamposPago() {
+  const pagoSel = document.querySelector('input[name="paymentType"]:checked');
+  if (!pagoSel) return false;
+  
+  if (pagoSel.value === 'creditCard') {
+    const cardNumber = (document.getElementById('cardNumber')?.value || '').trim().replace(/\s/g, '');
+    const cardName = (document.getElementById('cardName')?.value || '').trim();
+    const cardExpiry = (document.getElementById('cardExpiry')?.value || '').trim();
+    const cardCVV = (document.getElementById('cardCVV')?.value || '').trim();
+    
+    if (!cardNumber || cardNumber.length < 13) {
+      alert('Por favor ingresa un número de tarjeta válido.');
+      return false;
+    }
+    if (!cardName) {
+      alert('Por favor ingresa el nombre del titular.');
+      return false;
+    }
+    if (!cardExpiry || cardExpiry.length !== 5) {
+      alert('Por favor ingresa una fecha de vencimiento válida (MM/AA).');
+      return false;
+    }
+    if (!cardCVV || cardCVV.length < 3) {
+      alert('Por favor ingresa un CVV válido.');
+      return false;
+    }
+    
+  } else if (pagoSel.value === 'bankTransfer') {
+    const bankName = (document.getElementById('bankName')?.value || '').trim();
+    const accountHolder = (document.getElementById('accountHolder')?.value || '').trim();
+    const accountNumber = (document.getElementById('accountNumber')?.value || '').trim();
+    const accountType = (document.getElementById('accountType')?.value || '').trim();
+    
+    if (!bankName) {
+      alert('Por favor selecciona tu banco.');
+      return false;
+    }
+    if (!accountHolder) {
+      alert('Por favor ingresa el titular de la cuenta.');
+      return false;
+    }
+    if (!accountNumber) {
+      alert('Por favor ingresa el número de cuenta.');
+      return false;
+    }
+    if (!accountType) {
+      alert('Por favor selecciona el tipo de cuenta.');
+      return false;
+    }
+  }
+  
+  return true;
 }
 
 function chequeosAlComprar() {
@@ -274,17 +426,35 @@ function chequeosAlComprar() {
       alert('Por favor completa los campos de dirección obligatorios.');
       return;
     }
+    
+    if (!validarCamposPago()) {
+      return;
+    }
+    
     const envioSel = document.querySelector('input[name="shippingType"]:checked');
     const pagoSel = document.querySelector('input[name="paymentType"]:checked');
+    
+    let paymentData = { method: pagoSel?.value || '', name: pagoSel?.dataset?.name || '' };
+    
+    if (pagoSel?.value === 'creditCard') {
+      paymentData.cardNumber = document.getElementById('cardNumber')?.value.replace(/\s/g, '').slice(-4); // Solo últimos 4 dígitos
+      paymentData.cardName = document.getElementById('cardName')?.value;
+    } else if (pagoSel?.value === 'bankTransfer') {
+      paymentData.bankName = document.getElementById('bankName')?.value;
+      paymentData.accountHolder = document.getElementById('accountHolder')?.value;
+      paymentData.accountType = document.getElementById('accountType')?.value;
+    }
+    
     const orden = {
       cart,
       shipping: { name: envioSel?.dataset?.name || '', pct: parseFloat(envioSel?.value || 0) },
       address: {
         departmento, localidad, calle, numero, esquina: (document.getElementById('corner')?.value || '').trim()
       },
-      payment: { method: pagoSel?.value || '', name: pagoSel?.dataset?.name || '' },
+      payment: paymentData,
       date: new Date().toISOString()
     };
+    
     localStorage.setItem('lastOrder', JSON.stringify(orden));
     localStorage.removeItem('cart');
     alert('Compra realizada con éxito.');
