@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function formarCarrito() {
   const cartContainer = document.getElementById("cart-container");
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+   
 
   if (!cartContainer) return;
 
@@ -22,6 +23,7 @@ function formarCarrito() {
     if (CostoEnvio) CostoEnvio.textContent = "";
     if (TotalPrice) TotalPrice.textContent = "";
     actualizarContadorCarrito();
+    cartContainer.style.display = 'none';
     return;
   }
 
@@ -36,7 +38,7 @@ function formarCarrito() {
     cartItem.innerHTML = `
     <div class="card-total mode mb-3">
       <div class="card-producto container-fluid"> 
-        <div class="row align-items-center">
+        <div class="row align-items-center" style="width: 100%;">
           <div class="col-12 col-sm-3 text-center mb-2 mb-sm-0">
             <img class="card-img img-fluid" src="${item.image}" alt="${item.name}">
           </div>

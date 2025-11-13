@@ -1,5 +1,6 @@
 #main{
- margin-top: 40px;    
+ margin-top: 40px;
+ justify-content: center;    
 }
 
 html, body {
@@ -16,6 +17,12 @@ html, body {
 }
 
 .card {max-width: 20%;height: 300px!important ;}
+
+
+input:invalid {
+  border: 2px solid rgb(196, 0, 0);
+}
+
 
 }
 @media(max-width: 900px){
