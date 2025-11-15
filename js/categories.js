@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
         showCategoriesList();
     });
- //modo oscuro o claro
+  //modo oscuro o claro
     const body = document.body;
     const button = document.getElementById("modeButton");
     const savedTheme = localStorage.getItem("theme");

@@ -71,3 +71,7 @@
 }
 /*  Main \ center */
 
+#cat-list-container{
+  margin-top: 10px;
+  border-radius: 10px;
+}

@@ -260,15 +260,15 @@ a.custom-card:hover {
   display: none;
 }
 #banner2{
-  display: flex;
+  display: flex !important; 
   flex-direction: column;
   width: 100vw;
 }
 #IMG1{
-  display: flex;
+  display: flex !important;
 }
 #IMG2{
-  display: flex;
+  display: flex !important;
 }
 }
 #banner2{
@@ -280,5 +280,6 @@ a.custom-card:hover {
 }
 #IMG2{
   display: none;
+  transform: translateY(-2px);
   height: 50%;
 }

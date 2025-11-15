@@ -1,3 +1,18 @@
+
+function cambiarPesosADolar(){
+  const cartProuct = JSON.parse(localStorage.getItem("cart"))
+  cartProuct.forEach(element => {
+    if(element.currency === "UYU" ){
+      element.cost = (element.cost*0.025)
+      element.currency = "USD"
+    }
+    console.log(cartProuct)
+    localStorage.setItem("cart", JSON.stringify(cartProuct));
+  });
+}
+document.addEventListener("DOMContentLoaded",()=>{
+  cambiarPesosADolar()
+})
 document.addEventListener("DOMContentLoaded", () => {
   formarCarrito();
   tiposDeEnvios();
@@ -5,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
   chequeosAlComprar();
   actualizarEnvioYTotales();
 });
-
 
 function formarCarrito() {
   const cartContainer = document.getElementById("cart-container");
