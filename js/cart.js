@@ -3,7 +3,8 @@ function cambiarPesosADolar(){
   const cartProuct = JSON.parse(localStorage.getItem("cart"))
   cartProuct.forEach(element => {
     if(element.currency === "UYU" ){
-      element.cost = (element.cost*0.025)
+      element.cost = Math.round((element.cost*0.025))
+      
       element.currency = "USD"
     }
     console.log(cartProuct)
