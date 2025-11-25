@@ -11,10 +11,9 @@ function cambiarPesosADolar(){
     localStorage.setItem("cart", JSON.stringify(cartProuct));
   });
 }
-document.addEventListener("DOMContentLoaded",()=>{
-  cambiarPesosADolar()
-})
 document.addEventListener("DOMContentLoaded", () => {
+  
+  cambiarPesosADolar();
   formarCarrito();
   tiposDeEnvios();
   formasDePago();
